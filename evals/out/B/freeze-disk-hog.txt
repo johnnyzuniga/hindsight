@@ -27,27 +27,27 @@ Plain everyday language. No event IDs or error codes in summary or steps. Reply 
 COMPLAINT: "excel freezes when I save"
 
 WHAT RESMAN HAS RECORDED (last 7 days):
-- 2 freezes; most recent Sat 3:32:03 AM.
-  [event 2] Sat 3:32:03 AM: Microsoft Excel froze (x2)
+- 2 freezes; most recent Sat 8:25:01 AM.
+  [event 2] Sat 8:25:01 AM: Microsoft Excel froze (x2)
 - 0 harmless background warnings (ignored).
 - 0 installs/updates/driver changes.
-- Resource samples every 10 s; latest Sat 3:37:03 AM: memory 60%, CPU 15%.
-- Time now: Sat 3:37:03 AM.
+- Resource samples every 10 s; latest Sat 8:30:01 AM: memory 60%, CPU 15%.
+- Time now: Sat 8:30:01 AM.
 
 EVIDENCE (output of ResMan's tools, gathered for you):
 [get_health_events("168")]
 2 problem event(s) in the last 168 h (0 harmless warnings ignored):
-- [event 2] Sat 3:32:03 AM: Microsoft Excel froze (x2 since Sat 3:17:03 AM). Stopped responding for about 15 seconds.
+- [event 2] Sat 8:25:01 AM: Microsoft Excel froze (x2 since Sat 8:10:01 AM). Stopped responding for about 15 seconds.
 
 [get_event_details("2")]
-Event 2 at Sat 3:32:03 AM: Microsoft Excel froze. Stopped responding for about 15 seconds.
+Event 2 at Sat 8:25:01 AM: Microsoft Excel froze. Stopped responding for about 15 seconds.
 Windows' own text: "app_hang (staged)"
 Details: DurationSeconds=15
 At that moment: memory 63% full, processor 28% busy. Biggest memory users: Microsoft Excel 910 MB, Microsoft OneDrive 260 MB. Busiest: Microsoft OneDrive 10% CPU. Heavy disk: Microsoft OneDrive 90 MB/s.
 No changes in the 3 days before mention 'EXCEL'.
 
 [get_event_details("1")]
-Event 1 at Sat 3:17:03 AM: Microsoft Excel froze. Stopped responding for about 12 seconds.
+Event 1 at Sat 8:10:01 AM: Microsoft Excel froze. Stopped responding for about 12 seconds.
 Windows' own text: "app_hang (staged)"
 Details: DurationSeconds=12
 At that moment: memory 64% full, processor 30% busy. Biggest memory users: Microsoft Excel 900 MB, Microsoft OneDrive 250 MB. Busiest: Microsoft OneDrive 12% CPU. Heavy disk: Microsoft OneDrive 85 MB/s.
@@ -58,16 +58,16 @@ Resource history, last 60 min (63 samples).
 Grew or appeared the most: Microsoft Excel 900->1810 MB.
 CPU spikes (50%+ by one program): none.
 Large but steady the whole time (less likely to explain a sudden problem): none.
-Peak memory 64% (Sat 3:17:03 AM), peak CPU 30%.
+Peak memory 64% (Sat 8:10:01 AM), peak CPU 30%.
 Over time, oldest first:
-- Sat 3:07:03 AM: memory 60% (peak 60%), CPU 15%. Busiest: Microsoft Excel 2% CPU/900 MB
-- Sat 3:11:03 AM: memory 60% (peak 60%), CPU 15%. Busiest: Microsoft Excel 2% CPU/900 MB
-- Sat 3:15:03 AM: memory 61% (peak 64%), CPU 17%. Busiest: Microsoft OneDrive 12% CPU/250 MB/85 MB/s disk, Microsoft Excel 2% CPU/900 MB
-- Sat 3:18:33 AM: memory 60% (peak 60%), CPU 15%. Busiest: Microsoft Excel 2% CPU/900 MB
-- Sat 3:22:33 AM: memory 60% (peak 60%), CPU 15%. Busiest: Microsoft Excel 2% CPU/900 MB
-- Sat 3:26:33 AM: memory 60% (peak 60%), CPU 15%. Busiest: Microsoft Excel 2% CPU/900 MB
-- Sat 3:30:33 AM: memory 60% (peak 63%), CPU 17%. Busiest: Microsoft OneDrive 10% CPU/260 MB/90 MB/s disk, Microsoft Excel 2% CPU/910 MB
-- Sat 3:34:03 AM: memory 60% (peak 60%), CPU 15%. Busiest: Microsoft Excel 2% CPU/900 MB
+- Sat 8:00:01 AM: memory 60% (peak 60%), CPU 15%. Busiest: Microsoft Excel 2% CPU/900 MB
+- Sat 8:04:01 AM: memory 60% (peak 60%), CPU 15%. Busiest: Microsoft Excel 2% CPU/900 MB
+- Sat 8:08:01 AM: memory 61% (peak 64%), CPU 17%. Busiest: Microsoft OneDrive 12% CPU/250 MB/85 MB/s disk, Microsoft Excel 2% CPU/900 MB
+- Sat 8:11:31 AM: memory 60% (peak 60%), CPU 15%. Busiest: Microsoft Excel 2% CPU/900 MB
+- Sat 8:15:31 AM: memory 60% (peak 60%), CPU 15%. Busiest: Microsoft Excel 2% CPU/900 MB
+- Sat 8:19:31 AM: memory 60% (peak 60%), CPU 15%. Busiest: Microsoft Excel 2% CPU/900 MB
+- Sat 8:23:31 AM: memory 60% (peak 63%), CPU 17%. Busiest: Microsoft OneDrive 10% CPU/260 MB/90 MB/s disk, Microsoft Excel 2% CPU/910 MB
+- Sat 8:27:01 AM: memory 60% (peak 60%), CPU 15%. Busiest: Microsoft Excel 2% CPU/900 MB
 
 [get_changes("14")]
 Nothing was installed, updated or changed in the last 14 days.
@@ -78,7 +78,7 @@ No network samples recorded for that period.
 [get_findings("")]
 Automatic pattern checks (hints):
 - Pattern: Microsoft Excel froze 2 times this week. Microsoft OneDrive was busy with the disk (90 MB/s) in 1 of 2 freezes; Microsoft OneDrive was busy with the disk (85 MB/s) in 1 of 2 freezes
-- Known pattern 'An app froze' (2 event(s), last Sat 3:32:03 AM)
+- Known pattern 'An app froze' (2 event(s), last Sat 8:25:01 AM)
 
 Reply with JSON only:
 {"summary": "...", "likely_cause": "...", "confidence": "low|medium|high", "evidence": ["..."], "steps": ["..."], "needs_human": true|false}

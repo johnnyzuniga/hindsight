@@ -27,31 +27,31 @@ Plain everyday language. No event IDs or error codes in summary or steps. Reply 
 COMPLAINT: "something keeps popping up an error and closing, what is WidgetBarHelper?"
 
 WHAT RESMAN HAS RECORDED (last 7 days):
-- 3 crashes; most recent Sat 3:32:47 AM.
-  [event 3] Sat 3:32:47 AM: WidgetBarHelper closed unexpectedly (x3)
+- 3 crashes; most recent Sat 8:20:42 AM.
+  [event 3] Sat 8:20:42 AM: WidgetBarHelper closed unexpectedly (x3)
 - 0 harmless background warnings (ignored).
 - 0 installs/updates/driver changes.
-- Time now: Sat 3:42:47 AM.
+- Time now: Sat 8:30:42 AM.
 
 EVIDENCE (output of ResMan's tools, gathered for you):
 [get_health_events("168")]
 3 problem event(s) in the last 168 h (0 harmless warnings ignored):
-- [event 3] Sat 3:32:47 AM: WidgetBarHelper closed unexpectedly (x3 since Sat 2:52:47 AM)
+- [event 3] Sat 8:20:42 AM: WidgetBarHelper closed unexpectedly (x3 since Sat 7:40:42 AM)
 
 [get_event_details("3")]
-Event 3 at Sat 3:32:47 AM: WidgetBarHelper closed unexpectedly. 
+Event 3 at Sat 8:20:42 AM: WidgetBarHelper closed unexpectedly. 
 Windows' own text: "app_crash (staged)"
 The app's own error: System.IO.FileNotFoundException: Could not find file 'C:\Users\Public\WidgetBar\config.json'.
 No changes in the 3 days before mention 'WidgetBarHelper'.
 
 [get_event_details("2")]
-Event 2 at Sat 3:12:47 AM: WidgetBarHelper closed unexpectedly. 
+Event 2 at Sat 8:00:42 AM: WidgetBarHelper closed unexpectedly. 
 Windows' own text: "app_crash (staged)"
 The app's own error: System.IO.FileNotFoundException: Could not find file 'C:\Users\Public\WidgetBar\config.json'.
 No changes in the 3 days before mention 'WidgetBarHelper'.
 
 [get_event_details("1")]
-Event 1 at Sat 2:52:47 AM: WidgetBarHelper closed unexpectedly. 
+Event 1 at Sat 7:40:42 AM: WidgetBarHelper closed unexpectedly. 
 Windows' own text: "app_crash (staged)"
 The app's own error: System.IO.FileNotFoundException: Could not find file 'C:\Users\Public\WidgetBar\config.json'.
 No changes in the 3 days before mention 'WidgetBarHelper'.
@@ -68,7 +68,7 @@ No network samples recorded for that period.
 [get_findings("")]
 Automatic pattern checks (hints):
 - Pattern: WidgetBarHelper crashed 3 times today. Repeated crashes in a short time.
-- Known pattern 'WidgetBarHelper keeps crashing' (3 event(s), last Sat 3:32:47 AM)
+- Known pattern 'WidgetBarHelper keeps crashing' (3 event(s), last Sat 8:20:42 AM)
 
 Reply with JSON only:
 {"summary": "...", "likely_cause": "...", "confidence": "low|medium|high", "evidence": ["..."], "steps": ["..."], "needs_human": true|false}

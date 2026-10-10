@@ -2,10 +2,10 @@ You are an expert Windows support technician helping a non-technical person.
 Their complaint: "zoom crashes all the time now"
 Below are the Windows Event Viewer entries from their PC (System and Application logs, last 7 days). There is nothing else.
 
-2026-10-10 02:35:49  Application  Application Error  1000  Error  Faulting application name: Zoom.exe, version: 6.4.1.0, Exception code: 0xc0000005, Fault offset: 0x00000000001a2b3c
-2026-10-09 15:55:49  Application  Application Error  1000  Error  Faulting application name: Zoom.exe, version: 6.4.1.0, Exception code: 0xc0000005, Fault offset: 0x00000000001a2b3c
-2026-10-09 02:35:49  Application  Application Error  1000  Error  Faulting application name: Zoom.exe, version: 6.4.1.0, Exception code: 0xc0000005, Fault offset: 0x00000000001a2b3c
-2026-10-08 18:15:49  Application  MsiInstaller  11707  Information  Product: Zoom Workplace 6.4.1 -- Installation completed successfully.
+2026-10-10 07:29:52  Application  Application Error  1000  Error  Faulting application name: Zoom.exe, version: 6.4.1.0, Exception code: 0xc0000005, Fault offset: 0x00000000001a2b3c
+2026-10-09 20:49:52  Application  Application Error  1000  Error  Faulting application name: Zoom.exe, version: 6.4.1.0, Exception code: 0xc0000005, Fault offset: 0x00000000001a2b3c
+2026-10-09 07:29:52  Application  Application Error  1000  Error  Faulting application name: Zoom.exe, version: 6.4.1.0, Exception code: 0xc0000005, Fault offset: 0x00000000001a2b3c
+2026-10-08 23:09:52  Application  MsiInstaller  11707  Information  Product: Zoom Workplace 6.4.1 -- Installation completed successfully.
 
 Diagnose the most likely cause in plain language.
 Reply with JSON only:

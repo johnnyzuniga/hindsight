@@ -3,16 +3,16 @@
   "likely_cause": "A missing config file (config.json) caused WidgetBarHelper to crash and close unexpectedly.",
   "Confidence": "high",
   "Evidence": [
-    "The app crashed three times, last at 3:32 AM.",
-    "Error message showed missing \u0027config.json\u0027 file at C:\\Users\\Public\\WidgetBar\\config.json.",
-    "No recent installs or changes linked to WidgetBarHelper.",
-    "WidgetBarHelper is not a known Windows program, but its crash is directly tied to a missing file."
+    "The app crashed three times, last at 8:20 AM with a missing file error.",
+    "Error message explicitly states: \u0027Could not find file \u0027C:\\Users\\Public\\WidgetBar\\config.json\u0027.",
+    "No recent installs or changes linked to WidgetBarHelper in the last 7 days.",
+    "WidgetBarHelper is not recognized in ResMan\u0027s knowledge base but its crash pattern is clear."
   ],
   "Steps": [
-    "To fix, check if the folder C:\\Users\\Public\\WidgetBar exists.",
-    "If it does, look for a config.json file and try to restore or recreate it.",
-    "If the folder is missing, the program may be corrupted or outdated.",
-    "Consider uninstalling WidgetBarHelper if it\u0027s not needed."
+    "To fix, check if the folder \u0027C:\\Users\\Public\\WidgetBar\u0027 exists.",
+    "If it does, look for a file named \u0027config.json\u0027 and copy it if missing.",
+    "If the folder is missing, contact the program\u0027s developer or uninstall it.",
+    "Restart the PC after making changes to see if the issue returns."
   ],
   "needs_human": false,
   "tools": [

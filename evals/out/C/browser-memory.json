@@ -1,18 +1,18 @@
 {
   "Summary": "Your computer shows high memory usage, especially by Google Chrome, which is likely causing the \u0027low on memory\u0027 message.",
-  "likely_cause": "Google Chrome is consuming large amounts of memory, reaching 7900 MB and triggering memory warnings.",
+  "likely_cause": "Google Chrome is consuming excessive memory, reaching 7900 MB and causing memory shortages during peak usage.",
   "Confidence": "high",
   "Evidence": [
-    "On Sat 3:28:17 AM, memory was 98% full with Chrome using 7900 MB.",
+    "On Sat 8:20:10 AM, memory was 98% full with Chrome using 7900 MB.",
     "Chrome\u0027s memory usage grew from 7400 MB to 7900 MB over 300 minutes.",
-    "Microsoft Teams used steady 950 MB but was not the primary cause.",
+    "Microsoft Teams used steady 950 MB but was not the primary cause of memory pressure.",
     "No new software or updates were installed in the past 7 days."
   ],
   "Steps": [
     "Close Google Chrome completely by clicking the taskbar icon and selecting \u0027Close Chrome\u0027.",
     "Restart your computer and check if the memory warning returns.",
-    "If it does, try opening Chrome in incognito mode to see if memory use drops.",
-    "Limit Chrome tabs or consider using a different browser if it\u0027s needed daily."
+    "If the issue returns, try closing other open tabs in Chrome before reopening it.",
+    "Consider using a browser with less memory usage, like Microsoft Edge."
   ],
   "needs_human": false,
   "tools": [

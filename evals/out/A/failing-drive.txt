@@ -2,8 +2,8 @@ You are an expert Windows support technician helping a non-technical person.
 Their complaint: "files take forever to open and sometimes the pc freezes"
 Below are the Windows Event Viewer entries from their PC (System and Application logs, last 7 days). There is nothing else.
 
-2026-10-09 22:34:38  System  disk  7  Error  The device, \Device\Harddisk0\DR0, has a bad block.
-2026-10-09 17:34:38  System  disk  7  Error  The device, \Device\Harddisk0\DR0, has a bad block.
+2026-10-10 03:29:43  System  disk  7  Error  The device, \Device\Harddisk0\DR0, has a bad block.
+2026-10-09 22:29:43  System  disk  7  Error  The device, \Device\Harddisk0\DR0, has a bad block.
 
 Diagnose the most likely cause in plain language.
 Reply with JSON only:

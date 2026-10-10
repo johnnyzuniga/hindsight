@@ -27,19 +27,19 @@ Plain everyday language. No event IDs or error codes in summary or steps. Reply 
 COMPLAINT: "my internet stopped working"
 
 WHAT RESMAN HAS RECORDED (last 7 days):
-- 1 problems (network changes); most recent Sat 3:15:58 AM.
-  [event 1] Sat 3:15:58 AM: Internet access lost; still connected to 'HomeNet'
+- 1 problems (network changes); most recent Sat 8:14:16 AM.
+  [event 1] Sat 8:14:16 AM: Internet access lost; still connected to 'HomeNet'
 - 0 harmless background warnings (ignored).
 - 0 installs/updates/driver changes.
-- Time now: Sat 3:30:58 AM.
+- Time now: Sat 8:29:16 AM.
 
 EVIDENCE (output of ResMan's tools, gathered for you):
 [get_health_events("168")]
 1 problem event(s) in the last 168 h (0 harmless warnings ignored):
-- [event 1] Sat 3:15:58 AM: Internet access lost; still connected to 'HomeNet'
+- [event 1] Sat 8:14:16 AM: Internet access lost; still connected to 'HomeNet'
 
 [get_event_details("1")]
-Event 1 at Sat 3:15:58 AM: Internet access lost; still connected to 'HomeNet'. 
+Event 1 at Sat 8:14:16 AM: Internet access lost; still connected to 'HomeNet'. 
 Windows' own text: "Internet access lost; still connected to 'HomeNet'"
 Details: From=internet, To=local_only, SignalBarsNow=5, RouterReachableNow=True
 No changes in the 3 days before mention a driver or Windows update.
@@ -53,11 +53,11 @@ Nothing was installed, updated or changed in the last 14 days.
 [get_network_history("2")]
 Right now: connected to the local network but NO internet, Wi-Fi 'HomeNet' signal 5/5, router answers in 3 ms.
 Connection over time (oldest first):
-- Sat 3:00:58 AM: internet OK, Wi-Fi 'HomeNet' signal 5/5, router answers in 2 ms
-- Sat 3:15:58 AM: connected to the local network but NO internet, Wi-Fi 'HomeNet' signal 5/5, router answers in 2 ms
+- Sat 7:59:16 AM: internet OK, Wi-Fi 'HomeNet' signal 5/5, router answers in 2 ms
+- Sat 8:14:16 AM: connected to the local network but NO internet, Wi-Fi 'HomeNet' signal 5/5, router answers in 2 ms
 Router ping: median 2 ms, worst 3 ms; router didn't answer in 0 of 3 checks.
 Network events:
-- [event 1] Sat 3:15:58 AM: Internet access lost; still connected to 'HomeNet'
+- [event 1] Sat 8:14:16 AM: Internet access lost; still connected to 'HomeNet'
 
 [get_findings("")]
 No automatic pattern matched. Reason from the raw evidence.

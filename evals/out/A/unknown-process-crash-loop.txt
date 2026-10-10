@@ -2,9 +2,9 @@ You are an expert Windows support technician helping a non-technical person.
 Their complaint: "something keeps popping up an error and closing, what is WidgetBarHelper?"
 Below are the Windows Event Viewer entries from their PC (System and Application logs, last 7 days). There is nothing else.
 
-2026-10-10 03:32:47  Application  .NET Runtime  1026  Error  Application: WidgetBarHelper.exe Description: The process was terminated due to an unhandled exception. Exception Info: System.IO.FileNotFoundException: Could not find file 'C:\Users\Public\WidgetBar\config.json'.
-2026-10-10 03:12:47  Application  .NET Runtime  1026  Error  Application: WidgetBarHelper.exe Description: The process was terminated due to an unhandled exception. Exception Info: System.IO.FileNotFoundException: Could not find file 'C:\Users\Public\WidgetBar\config.json'.
-2026-10-10 02:52:47  Application  .NET Runtime  1026  Error  Application: WidgetBarHelper.exe Description: The process was terminated due to an unhandled exception. Exception Info: System.IO.FileNotFoundException: Could not find file 'C:\Users\Public\WidgetBar\config.json'.
+2026-10-10 08:20:42  Application  .NET Runtime  1026  Error  Application: WidgetBarHelper.exe Description: The process was terminated due to an unhandled exception. Exception Info: System.IO.FileNotFoundException: Could not find file 'C:\Users\Public\WidgetBar\config.json'.
+2026-10-10 08:00:42  Application  .NET Runtime  1026  Error  Application: WidgetBarHelper.exe Description: The process was terminated due to an unhandled exception. Exception Info: System.IO.FileNotFoundException: Could not find file 'C:\Users\Public\WidgetBar\config.json'.
+2026-10-10 07:40:42  Application  .NET Runtime  1026  Error  Application: WidgetBarHelper.exe Description: The process was terminated due to an unhandled exception. Exception Info: System.IO.FileNotFoundException: Could not find file 'C:\Users\Public\WidgetBar\config.json'.
 
 Diagnose the most likely cause in plain language.
 Reply with JSON only:

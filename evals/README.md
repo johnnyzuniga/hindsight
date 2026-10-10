@@ -1,12 +1,12 @@
 # A/B/C evaluation
 
-The question: does a small **local** model with ResMan's captured evidence diagnose PC problems as well as a big cloud model?
+The question: does a small **local** model with Hindsight's captured evidence diagnose PC problems as well as a big cloud model?
 
 | Setup | Model | Gets | How it runs |
 |---|---|---|---|
 | A | Big cloud model | Event Viewer-style logs only (what you could paste into a chatbot) | Exported prompt: `out/A/<case>.txt` |
-| B | Big cloud model | The same evidence ResMan's tools produce (resource history, the moment of each event, the minute before, changes, network), gathered up front | Exported prompt: `out/B/<case>.txt` |
-| C | Local Qwen3-4B (Q4, ~2.4 GB) | The same evidence, through ResMan's tool-calling harness (it picks the tools) | Runs here on the local GPU |
+| B | Big cloud model | The same evidence Hindsight's tools produce (resource history, the moment of each event, the minute before, changes, network), gathered up front | Exported prompt: `out/B/<case>.txt` |
+| C | Local Qwen3-4B (Q4, ~2.4 GB) | The same evidence, through Hindsight's tool-calling harness (it picks the tools) | Runs here on the local GPU |
 
 No cloud model is called by this code. To fill in A and B:
 1. Paste each prompt from `out/A` or `out/B` into the model you're comparing against.
@@ -50,9 +50,10 @@ See [results.md](results.md).
 |---|---|---|---|
 | 2026-10-09 | 13/14 | 7.5 s | Healthy GPU. Failure: `nothing-relevant` (below). |
 | 2026-10-10, run 1 | 12/14 | ~70 s | After the resource-history fix. `nothing-relevant` now passes; `no-signature-periodic-stutter` failed only for suggesting an antivirus scan (the diagnosis was right); `failing-drive` missed `needs_human`. |
-| 2026-10-10, run 2 | **14/14** | ~70 s | After the rule that a hardware fault the AI inspected always sets `needs_human`. |
+| 2026-10-10, run 2 | 14/14 | ~70 s | After the rule that a hardware fault the AI inspected always sets `needs_human`. |
+| 2026-10-10, run 3 | **14/14** | **8.4 s** (max 18.5 s, the first case, which includes loading the model) | Same code as run 2, after a reboot: GPU healthy again. This is the representative result. |
 
-The 2026-10-10 times are **not representative**: Windows had paged the model's graphics memory out after two games ran (only ~0.6 of ~3.6 GB stayed on the GPU), so generation ran at ~4.5 tokens/s instead of ~48. Re-measure after a reboot.
+The times of 2026-10-10 runs 1 and 2 are **not representative**: Windows had paged the model's graphics memory out after two games ran (only ~0.6 of ~3.6 GB stayed on the GPU), so generation ran at ~4.5 tokens/s instead of ~48. Re-measure after a reboot.
 
 Answers are greedy (deterministic for the same input), but fixture timestamps differ between runs, so a borderline case can flip; the stutter case did.
 

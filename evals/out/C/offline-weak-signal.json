@@ -1,18 +1,18 @@
 {
-  "Summary": "Your internet dropped because the Wi-Fi signal weakened and the router stopped responding, likely due to distance, interference, or a temporary issue with the router.",
-  "likely_cause": "A weak Wi-Fi signal and router unresponsiveness caused the connection to drop.",
+  "Summary": "The Wi-Fi dropped because the signal weakened and the router stopped responding, likely due to distance or interference.",
+  "likely_cause": "Weak Wi-Fi signal and router unresponsiveness at the time of the drop.",
   "Confidence": "high",
   "Evidence": [
-    "The Wi-Fi signal dropped from 4/5 to 1/5 just before the drop at 3:21:51 AM.",
-    "Router stopped answering the network requests at 3:20:51 AM and failed to respond in three out of six checks.",
-    "Event details confirm the drop was due to signal loss, not a driver or update issue.",
-    "No recent changes, installs, or updates were recorded in the past 7 days."
+    "The Wi-Fi signal dropped from 4/5 to 1/5 at 8:17 AM, then router stopped answering.",
+    "Router didn\u0027t respond in 3 of 6 checks during the hour before the drop.",
+    "Event at 8:21:08 AM confirms disconnection due to signal loss.",
+    "No recent changes, updates, or driver issues were recorded."
   ],
   "Steps": [
-    "Moved closer to the router to improve the Wi-Fi signal.",
+    "Moved closer to the router to check if distance is affecting the signal.",
     "Restarted the router to refresh the connection.",
     "Checked if other devices on the same network also lost connection.",
-    "Tested the internet with a mobile hotspot to confirm if the issue is with your router or Wi-Fi."
+    "Tested the Wi-Fi signal strength using a phone or device nearby."
   ],
   "needs_human": false,
   "tools": [

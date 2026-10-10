@@ -27,35 +27,35 @@ Plain everyday language. No event IDs or error codes in summary or steps. Reply 
 COMPLAINT: "my pc takes forever to start now"
 
 WHAT RESMAN HAS RECORDED (last 7 days):
-- 3 problems; most recent Sat 1:59:24 AM.
-  [event 3] Sat 1:59:24 AM: Startup took 152 seconds
-  [event 2] Thu 1:39:24 AM: Startup took 141 seconds
-  [event 1] Mon 11:39:24 PM: Startup took 38 seconds
+- 3 problems; most recent Sat 6:50:18 AM.
+  [event 3] Sat 6:50:18 AM: Startup took 152 seconds
+  [event 2] Thu 6:30:18 AM: Startup took 141 seconds
+  [event 1] Tue 4:30:18 AM: Startup took 38 seconds
 - 0 harmless background warnings (ignored).
 - 3 installs/updates/driver changes.
-- Time now: Sat 3:39:24 AM.
+- Time now: Sat 8:30:18 AM.
 
 EVIDENCE (output of ResMan's tools, gathered for you):
 [get_health_events("168")]
 3 problem event(s) in the last 168 h (0 harmless warnings ignored):
-- [event 3] Sat 1:59:24 AM: Startup took 152 seconds
-- [event 2] Thu 1:39:24 AM: Startup took 141 seconds
-- [event 1] Mon 11:39:24 PM: Startup took 38 seconds
+- [event 3] Sat 6:50:18 AM: Startup took 152 seconds
+- [event 2] Thu 6:30:18 AM: Startup took 141 seconds
+- [event 1] Tue 4:30:18 AM: Startup took 38 seconds
 
 [get_event_details("3")]
-Event 3 at Sat 1:59:24 AM: Startup took 152 seconds. 
+Event 3 at Sat 6:50:18 AM: Startup took 152 seconds. 
 Windows' own text: "boot_performance (staged)"
 Details: BootTime=152000
 No changes in the 3 days before mention a driver or Windows update (1 unrelated install/update group(s) happened; see get_changes).
 
 [get_event_details("2")]
-Event 2 at Thu 1:39:24 AM: Startup took 141 seconds. 
+Event 2 at Thu 6:30:18 AM: Startup took 141 seconds. 
 Windows' own text: "boot_performance (staged)"
 Details: BootTime=141000
 No changes in the 3 days before mention a driver or Windows update (1 unrelated install/update group(s) happened; see get_changes).
 
 [get_event_details("1")]
-Event 1 at Mon 11:39:24 PM: Startup took 38 seconds. 
+Event 1 at Tue 4:30:18 AM: Startup took 38 seconds. 
 Windows' own text: "boot_performance (staged)"
 Details: BootTime=38000
 No changes in the 3 days before mention a driver or Windows update.
@@ -65,14 +65,14 @@ No resource data for that period.
 
 [get_changes("14")]
 Changes in the last 14 days (newest first):
-- Wed 9:19:24 AM: Steam and 2 related items now start with Windows
+- Wed 2:10:18 PM: Steam and 2 related items now start with Windows
 
 [get_network_history("2")]
 No network samples recorded for that period.
 
 [get_findings("")]
 Automatic pattern checks (hints):
-- Known pattern 'Startup is slow' (2 event(s), last Sat 1:59:24 AM)
+- Known pattern 'Startup is slow' (2 event(s), last Sat 6:50:18 AM)
 
 Reply with JSON only:
 {"summary": "...", "likely_cause": "...", "confidence": "low|medium|high", "evidence": ["..."], "steps": ["..."], "needs_human": true|false}

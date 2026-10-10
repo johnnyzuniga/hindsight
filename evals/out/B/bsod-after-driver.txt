@@ -27,51 +27,51 @@ Plain everyday language. No event IDs or error codes in summary or steps. Reply 
 COMPLAINT: "my pc keeps crashing with a blue screen since this week"
 
 WHAT RESMAN HAS RECORDED (last 7 days):
-- 2 blue screens, 2 graphics driver resets; most recent Fri 10:32:05 PM.
-  [event 4] Fri 10:32:05 PM: Your PC crashed with a blue screen
-  [event 3] Fri 2:32:05 AM: Your graphics driver restarted
-  [event 2] Thu 1:32:05 AM: Your PC crashed with a blue screen
-  [event 1] Wed 12:32:05 AM: Your graphics driver restarted
+- 2 blue screens, 2 graphics driver resets; most recent Sat 3:29:24 AM.
+  [event 4] Sat 3:29:24 AM: Your PC crashed with a blue screen
+  [event 3] Fri 7:29:24 AM: Your graphics driver restarted
+  [event 2] Thu 6:29:24 AM: Your PC crashed with a blue screen
+  [event 1] Wed 5:29:24 AM: Your graphics driver restarted
 - 0 harmless background warnings (ignored).
 - 1 installs/updates/driver changes.
-- Time now: Sat 3:32:05 AM.
+- Time now: Sat 8:29:24 AM.
 
 EVIDENCE (output of ResMan's tools, gathered for you):
 [get_health_events("168")]
 4 problem event(s) in the last 168 h (0 harmless warnings ignored):
-- [event 4] Fri 10:32:05 PM: Your PC crashed with a blue screen
-- [event 3] Fri 2:32:05 AM: Your graphics driver restarted. The screen may have flickered or gone black for a moment.
-- [event 2] Thu 1:32:05 AM: Your PC crashed with a blue screen
-- [event 1] Wed 12:32:05 AM: Your graphics driver restarted. The screen may have flickered or gone black for a moment.
+- [event 4] Sat 3:29:24 AM: Your PC crashed with a blue screen
+- [event 3] Fri 7:29:24 AM: Your graphics driver restarted. The screen may have flickered or gone black for a moment.
+- [event 2] Thu 6:29:24 AM: Your PC crashed with a blue screen
+- [event 1] Wed 5:29:24 AM: Your graphics driver restarted. The screen may have flickered or gone black for a moment.
 
 [get_event_details("4")]
-Event 4 at Fri 10:32:05 PM: Your PC crashed with a blue screen. 
+Event 4 at Sat 3:29:24 AM: Your PC crashed with a blue screen. 
 Windows' own text: "blue_screen (staged)"
 Details: BugcheckCode=0x116, param1=nvlddmkm.sys
 No changes in the 3 days before mention a driver or Windows update.
 
 [get_event_details("3")]
-Event 3 at Fri 2:32:05 AM: Your graphics driver restarted. The screen may have flickered or gone black for a moment.
+Event 3 at Fri 7:29:24 AM: Your graphics driver restarted. The screen may have flickered or gone black for a moment.
 Windows' own text: "display_driver_reset (staged)"
-Possibly related changes in the 3 days before: A driver was installed: NVIDIA driver nvlddmkm 32.0.15.6094 (Tue 4:12:05 PM)
+Possibly related changes in the 3 days before: A driver was installed: NVIDIA driver nvlddmkm 32.0.15.6094 (Tue 9:09:24 PM)
 
 [get_event_details("2")]
-Event 2 at Thu 1:32:05 AM: Your PC crashed with a blue screen. 
+Event 2 at Thu 6:29:24 AM: Your PC crashed with a blue screen. 
 Windows' own text: "blue_screen (staged)"
 Details: BugcheckCode=0x116, param1=nvlddmkm.sys
-Possibly related changes in the 3 days before: A driver was installed: NVIDIA driver nvlddmkm 32.0.15.6094 (Tue 4:12:05 PM)
+Possibly related changes in the 3 days before: A driver was installed: NVIDIA driver nvlddmkm 32.0.15.6094 (Tue 9:09:24 PM)
 
 [get_event_details("1")]
-Event 1 at Wed 12:32:05 AM: Your graphics driver restarted. The screen may have flickered or gone black for a moment.
+Event 1 at Wed 5:29:24 AM: Your graphics driver restarted. The screen may have flickered or gone black for a moment.
 Windows' own text: "display_driver_reset (staged)"
-Possibly related changes in the 3 days before: A driver was installed: NVIDIA driver nvlddmkm 32.0.15.6094 (Tue 4:12:05 PM)
+Possibly related changes in the 3 days before: A driver was installed: NVIDIA driver nvlddmkm 32.0.15.6094 (Tue 9:09:24 PM)
 
 [get_resource_history("60")]
 No resource data for that period.
 
 [get_changes("14")]
 Changes in the last 14 days (newest first):
-- Tue 4:12:05 PM: A driver was installed: NVIDIA driver nvlddmkm 32.0.15.6094
+- Tue 9:09:24 PM: A driver was installed: NVIDIA driver nvlddmkm 32.0.15.6094
 
 [get_network_history("2")]
 No network samples recorded for that period.
@@ -80,8 +80,8 @@ No network samples recorded for that period.
 Automatic pattern checks (hints):
 - Pattern: Blue-screen crashes started after a change on Tuesday. A driver was installed: NVIDIA driver nvlddmkm 32.0.15.6094 on Tue Oct 6. Since then: 2 times; in the two weeks before: 0.
 - Pattern: Graphics driver crashes started after a change on Tuesday. A driver was installed: NVIDIA driver nvlddmkm 32.0.15.6094 on Tue Oct 6. Since then: 2 times; in the two weeks before: 0.
-- Known pattern 'Repeated blue-screen crashes' (2 event(s), last Fri 10:32:05 PM)
-- Known pattern 'Your graphics driver stopped and recovered' (2 event(s), last Fri 2:32:05 AM)
+- Known pattern 'Repeated blue-screen crashes' (2 event(s), last Sat 3:29:24 AM)
+- Known pattern 'Your graphics driver stopped and recovered' (2 event(s), last Fri 7:29:24 AM)
 
 Reply with JSON only:
 {"summary": "...", "likely_cause": "...", "confidence": "low|medium|high", "evidence": ["..."], "steps": ["..."], "needs_human": true|false}

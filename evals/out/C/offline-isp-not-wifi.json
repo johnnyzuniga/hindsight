@@ -1,12 +1,12 @@
 {
-  "Summary": "The internet stopped working at 3:15 AM, but the router is reachable and Wi-Fi signal is strong. No recent changes or issues found.",
+  "Summary": "The internet stopped working at 8:14 AM, but the router is reachable and Wi-Fi signal is strong. No recent changes or issues found.",
   "likely_cause": "A temporary network issue caused by a disconnect in internet access, not a hardware or software failure.",
   "Confidence": "high",
   "Evidence": [
-    "The internet dropped at 3:15:58 AM, but the router remained reachable and Wi-Fi signal stayed at 5/5.",
+    "The internet dropped at 8:14 AM, but the router remained reachable and Wi-Fi signal stayed at 5/5.",
     "Router responded in 2 ms before and after the drop, showing no network hardware failure.",
     "No recent installs, updates, or driver changes were recorded.",
-    "Connection state changed from internet OK to local only at exactly 3:15:58 AM."
+    "Network history shows internet was working just minutes before the drop."
   ],
   "Steps": [
     "On the router, check if the internet connection is active (look for a green light).",

@@ -27,46 +27,46 @@ Plain everyday language. No event IDs or error codes in summary or steps. Reply 
 COMPLAINT: "my laptop just turns off by itself when I play games"
 
 WHAT RESMAN HAS RECORDED (last 7 days):
-- 27 heat slow-downs, 2 unexpected shutdowns; most recent Sat 12:33:21 AM.
-  [event 29] Sat 12:33:21 AM: Your PC turned off unexpectedly
-  [event 28] Sat 12:27:21 AM: Your PC slowed down because of heat (x15)
-  [event 13] Thu 3:33:21 AM: Your PC turned off unexpectedly
-  [event 12] Thu 3:24:21 AM: Your PC slowed down because of heat (x12)
+- 27 heat slow-downs, 2 unexpected shutdowns; most recent Sat 5:29:34 AM.
+  [event 29] Sat 5:29:34 AM: Your PC turned off unexpectedly
+  [event 28] Sat 5:23:34 AM: Your PC slowed down because of heat (x15)
+  [event 13] Thu 8:29:34 AM: Your PC turned off unexpectedly
+  [event 12] Thu 8:20:34 AM: Your PC slowed down because of heat (x12)
 - 0 harmless background warnings (ignored).
 - 0 installs/updates/driver changes.
-- Time now: Sat 3:33:21 AM.
+- Time now: Sat 8:29:34 AM.
 
 EVIDENCE (output of ResMan's tools, gathered for you):
 [get_health_events("168")]
 29 problem event(s) in the last 168 h (0 harmless warnings ignored):
-- [event 29] Sat 12:33:21 AM: Your PC turned off unexpectedly. It wasn't shut down normally (for example, power loss or holding the power button).
-- [event 28] Sat 12:27:21 AM: Your PC slowed down because of heat (x15 since Sat 12:13:21 AM)
-- [event 13] Thu 3:33:21 AM: Your PC turned off unexpectedly. It wasn't shut down normally (for example, power loss or holding the power button).
-- [event 12] Thu 3:24:21 AM: Your PC slowed down because of heat (x12 since Thu 3:13:21 AM)
+- [event 29] Sat 5:29:34 AM: Your PC turned off unexpectedly. It wasn't shut down normally (for example, power loss or holding the power button).
+- [event 28] Sat 5:23:34 AM: Your PC slowed down because of heat (x15 since Sat 5:09:34 AM)
+- [event 13] Thu 8:29:34 AM: Your PC turned off unexpectedly. It wasn't shut down normally (for example, power loss or holding the power button).
+- [event 12] Thu 8:20:34 AM: Your PC slowed down because of heat (x12 since Thu 8:09:34 AM)
 
 [get_event_details("29")]
-Event 29 at Sat 12:33:21 AM: Your PC turned off unexpectedly. It wasn't shut down normally (for example, power loss or holding the power button).
+Event 29 at Sat 5:29:34 AM: Your PC turned off unexpectedly. It wasn't shut down normally (for example, power loss or holding the power button).
 Windows' own text: "unexpected_shutdown (staged)"
 Details: BugcheckCode=0
 No changes in the 3 days before mention a driver or Windows update.
 
 [get_event_details("28")]
-Event 28 at Sat 12:27:21 AM: Your PC slowed down because of heat. 
+Event 28 at Sat 5:23:34 AM: Your PC slowed down because of heat. 
 Windows' own text: "thermal_throttle (staged)"
 No changes in the 3 days before mention a driver or Windows update.
 
 [get_event_details("27")]
-Event 27 at Sat 12:26:21 AM: Your PC slowed down because of heat. 
+Event 27 at Sat 5:22:34 AM: Your PC slowed down because of heat. 
 Windows' own text: "thermal_throttle (staged)"
 No changes in the 3 days before mention a driver or Windows update.
 
 [get_event_details("26")]
-Event 26 at Sat 12:25:21 AM: Your PC slowed down because of heat. 
+Event 26 at Sat 5:21:34 AM: Your PC slowed down because of heat. 
 Windows' own text: "thermal_throttle (staged)"
 No changes in the 3 days before mention a driver or Windows update.
 
 [get_event_details("25")]
-Event 25 at Sat 12:24:21 AM: Your PC slowed down because of heat. 
+Event 25 at Sat 5:20:34 AM: Your PC slowed down because of heat. 
 Windows' own text: "thermal_throttle (staged)"
 No changes in the 3 days before mention a driver or Windows update.
 
@@ -82,9 +82,9 @@ No network samples recorded for that period.
 [get_findings("")]
 Automatic pattern checks (hints):
 - Pattern: Your PC has been running hot. The processor slowed itself down because of heat 15 times in the last 24 hours (about 3.9 per day this week).
-- Known pattern 'Your PC turned off unexpectedly' (2 event(s), last Sat 12:33:21 AM)
-- Known pattern 'Your PC is running hot often' (15 event(s), last Sat 12:27:21 AM)
-- Known pattern 'Your PC slowed itself down because of heat' (12 event(s), last Thu 3:24:21 AM)
+- Known pattern 'Your PC turned off unexpectedly' (2 event(s), last Sat 5:29:34 AM)
+- Known pattern 'Your PC is running hot often' (15 event(s), last Sat 5:23:34 AM)
+- Known pattern 'Your PC slowed itself down because of heat' (12 event(s), last Thu 8:20:34 AM)
 
 Reply with JSON only:
 {"summary": "...", "likely_cause": "...", "confidence": "low|medium|high", "evidence": ["..."], "steps": ["..."], "needs_human": true|false}

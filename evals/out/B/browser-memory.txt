@@ -27,26 +27,26 @@ Plain everyday language. No event IDs or error codes in summary or steps. Reply 
 COMPLAINT: "I keep getting a message that my computer is low on memory"
 
 WHAT RESMAN HAS RECORDED (last 7 days):
-- 2 out-of-memory events; most recent Sat 3:28:17 AM.
-  [event 2] Sat 3:28:17 AM: Your PC ran out of memory (x2)
+- 2 out-of-memory events; most recent Sat 8:20:10 AM.
+  [event 2] Sat 8:20:10 AM: Your PC ran out of memory (x2)
 - 0 harmless background warnings (ignored).
 - 0 installs/updates/driver changes.
-- Resource samples every 10 s; latest Sat 3:28:17 AM: memory 98%, CPU 25%.
-- Time now: Sat 3:38:17 AM.
+- Resource samples every 10 s; latest Sat 8:20:10 AM: memory 98%, CPU 25%.
+- Time now: Sat 8:30:10 AM.
 
 EVIDENCE (output of ResMan's tools, gathered for you):
 [get_health_events("168")]
 2 problem event(s) in the last 168 h (0 harmless warnings ignored):
-- [event 2] Sat 3:28:17 AM: Your PC ran out of memory (x2 since Sat 2:08:17 AM)
+- [event 2] Sat 8:20:10 AM: Your PC ran out of memory (x2 since Sat 7:00:10 AM)
 
 [get_event_details("2")]
-Event 2 at Sat 3:28:17 AM: Your PC ran out of memory. 
+Event 2 at Sat 8:20:10 AM: Your PC ran out of memory. 
 Windows' own text: "low_memory (staged)"
 At that moment: memory 98% full, processor 25% busy. Biggest memory users: Google Chrome 7900 MB, Microsoft Teams (classic) 950 MB. Busiest: Google Chrome 18% CPU.
 No changes in the 3 days before mention a driver or Windows update.
 
 [get_event_details("1")]
-Event 1 at Sat 2:08:17 AM: Your PC ran out of memory. 
+Event 1 at Sat 7:00:10 AM: Your PC ran out of memory. 
 Windows' own text: "low_memory (staged)"
 At that moment: memory 97% full, processor 20% busy. Biggest memory users: Google Chrome 7400 MB, Microsoft Teams (classic) 900 MB. Busiest: Google Chrome 15% CPU.
 No changes in the 3 days before mention a driver or Windows update.
@@ -56,9 +56,9 @@ Resource history, last 60 min (1 samples).
 Grew or appeared the most: nothing notable.
 CPU spikes (50%+ by one program): none.
 Large but steady the whole time (less likely to explain a sudden problem): Google Chrome ~7900 MB, Microsoft Teams (classic) ~950 MB.
-Peak memory 98% (Sat 3:28:17 AM), peak CPU 25%.
+Peak memory 98% (Sat 8:20:10 AM), peak CPU 25%.
 Over time, oldest first:
-- Sat 3:28:17 AM: memory 98% (peak 98%), CPU 25%. Busiest: Google Chrome 18% CPU/7900 MB, Microsoft Teams (classic) 3% CPU/950 MB
+- Sat 8:20:10 AM: memory 98% (peak 98%), CPU 25%. Busiest: Google Chrome 18% CPU/7900 MB, Microsoft Teams (classic) 3% CPU/950 MB
 
 [get_changes("14")]
 Nothing was installed, updated or changed in the last 14 days.
@@ -68,7 +68,7 @@ No network samples recorded for that period.
 
 [get_findings("")]
 Automatic pattern checks (hints):
-- Known pattern 'Your PC ran out of memory' (2 event(s), last Sat 3:28:17 AM)
+- Known pattern 'Your PC ran out of memory' (2 event(s), last Sat 8:20:10 AM)
 
 Reply with JSON only:
 {"summary": "...", "likely_cause": "...", "confidence": "low|medium|high", "evidence": ["..."], "steps": ["..."], "needs_human": true|false}

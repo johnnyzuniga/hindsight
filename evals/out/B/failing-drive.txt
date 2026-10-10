@@ -27,34 +27,34 @@ Plain everyday language. No event IDs or error codes in summary or steps. Reply 
 COMPLAINT: "files take forever to open and sometimes the pc freezes"
 
 WHAT RESMAN HAS RECORDED (last 7 days):
-- 2 drive errors, 1 drive health warnings; most recent Sat 1:34:38 AM.
-  [event 3] Sat 1:34:38 AM: Drive health changed: WDC WD10EZEX
-  [event 2] Fri 10:34:38 PM: Your drive reported an error
-  [event 1] Fri 5:34:38 PM: Your drive reported an error
+- 2 drive errors, 1 drive health warnings; most recent Sat 6:29:43 AM.
+  [event 3] Sat 6:29:43 AM: Drive health changed: WDC WD10EZEX
+  [event 2] Sat 3:29:43 AM: Your drive reported an error
+  [event 1] Fri 10:29:43 PM: Your drive reported an error
 - 0 harmless background warnings (ignored).
 - 0 installs/updates/driver changes.
-- Time now: Sat 3:34:38 AM.
+- Time now: Sat 8:29:43 AM.
 
 EVIDENCE (output of ResMan's tools, gathered for you):
 [get_health_events("168")]
 3 problem event(s) in the last 168 h (0 harmless warnings ignored):
-- [event 3] Sat 1:34:38 AM: Drive health changed: WDC WD10EZEX. drive_health (staged)
-- [event 2] Fri 10:34:38 PM: Your drive reported an error
-- [event 1] Fri 5:34:38 PM: Your drive reported an error
+- [event 3] Sat 6:29:43 AM: Drive health changed: WDC WD10EZEX. drive_health (staged)
+- [event 2] Sat 3:29:43 AM: Your drive reported an error
+- [event 1] Fri 10:29:43 PM: Your drive reported an error
 
 [get_event_details("3")]
-Event 3 at Sat 1:34:38 AM: Drive health changed: WDC WD10EZEX. drive_health (staged)
+Event 3 at Sat 6:29:43 AM: Drive health changed: WDC WD10EZEX. drive_health (staged)
 Windows' own text: "drive_health (staged)"
 Details: Model=WDC WD10EZEX, HealthStatus=Warning, ReadErrorsTotal=184
 No changes in the 3 days before mention a driver or Windows update.
 
 [get_event_details("2")]
-Event 2 at Fri 10:34:38 PM: Your drive reported an error. 
+Event 2 at Sat 3:29:43 AM: Your drive reported an error. 
 Windows' own text: "disk_error (staged)"
 No changes in the 3 days before mention a driver or Windows update.
 
 [get_event_details("1")]
-Event 1 at Fri 5:34:38 PM: Your drive reported an error. 
+Event 1 at Fri 10:29:43 PM: Your drive reported an error. 
 Windows' own text: "disk_error (staged)"
 No changes in the 3 days before mention a driver or Windows update.
 
@@ -69,8 +69,8 @@ No network samples recorded for that period.
 
 [get_findings("")]
 Automatic pattern checks (hints):
-- Known pattern 'A drive's health is getting worse' (1 event(s), last Sat 1:34:38 AM)
-- Known pattern 'Your drive reported damaged areas' (2 event(s), last Fri 10:34:38 PM)
+- Known pattern 'A drive's health is getting worse' (1 event(s), last Sat 6:29:43 AM)
+- Known pattern 'Your drive reported damaged areas' (2 event(s), last Sat 3:29:43 AM)
 
 Reply with JSON only:
 {"summary": "...", "likely_cause": "...", "confidence": "low|medium|high", "evidence": ["..."], "steps": ["..."], "needs_human": true|false}

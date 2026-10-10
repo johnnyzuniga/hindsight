@@ -2,7 +2,7 @@ You are an expert Windows support technician helping a non-technical person.
 Their complaint: "my printer won't print"
 Below are the Windows Event Viewer entries from their PC (System and Application logs, last 7 days). There is nothing else.
 
-2026-10-08 01:40:30  Microsoft-Windows-WLAN-AutoConfig/Operational  WLAN-AutoConfig  8003  Information  WLAN AutoConfig service has successfully disconnected from a wireless network. Network: HomeNet Reason: The network is disconnected by the driver.
+2026-10-08 06:30:26  Microsoft-Windows-WLAN-AutoConfig/Operational  WLAN-AutoConfig  8003  Information  WLAN AutoConfig service has successfully disconnected from a wireless network. Network: HomeNet Reason: The network is disconnected by the driver.
 
 Diagnose the most likely cause in plain language.
 Reply with JSON only:

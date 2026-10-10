@@ -27,42 +27,42 @@ Plain everyday language. No event IDs or error codes in summary or steps. Reply 
 COMPLAINT: "zoom crashes all the time now"
 
 WHAT RESMAN HAS RECORDED (last 7 days):
-- 3 crashes; most recent Sat 2:35:49 AM.
-  [event 3] Sat 2:35:49 AM: Zoom closed unexpectedly
-  [event 2] Fri 3:55:49 PM: Zoom closed unexpectedly
-  [event 1] Fri 2:35:49 AM: Zoom closed unexpectedly
+- 3 crashes; most recent Sat 7:29:52 AM.
+  [event 3] Sat 7:29:52 AM: Zoom closed unexpectedly
+  [event 2] Fri 8:49:52 PM: Zoom closed unexpectedly
+  [event 1] Fri 7:29:52 AM: Zoom closed unexpectedly
 - 0 harmless background warnings (ignored).
 - 1 installs/updates/driver changes.
-- Time now: Sat 3:35:49 AM.
+- Time now: Sat 8:29:52 AM.
 
 EVIDENCE (output of ResMan's tools, gathered for you):
 [get_health_events("168")]
 3 problem event(s) in the last 168 h (0 harmless warnings ignored):
-- [event 3] Sat 2:35:49 AM: Zoom closed unexpectedly
-- [event 2] Fri 3:55:49 PM: Zoom closed unexpectedly
-- [event 1] Fri 2:35:49 AM: Zoom closed unexpectedly
+- [event 3] Sat 7:29:52 AM: Zoom closed unexpectedly
+- [event 2] Fri 8:49:52 PM: Zoom closed unexpectedly
+- [event 1] Fri 7:29:52 AM: Zoom closed unexpectedly
 
 [get_event_details("3")]
-Event 3 at Sat 2:35:49 AM: Zoom closed unexpectedly. 
+Event 3 at Sat 7:29:52 AM: Zoom closed unexpectedly. 
 Windows' own text: "app_crash (staged)"
-Possibly related changes in the 3 days before: Zoom Workplace 6.4.1 was installed (Thu 6:15:49 PM)
+Possibly related changes in the 3 days before: Zoom Workplace 6.4.1 was installed (Thu 11:09:52 PM)
 
 [get_event_details("2")]
-Event 2 at Fri 3:55:49 PM: Zoom closed unexpectedly. 
+Event 2 at Fri 8:49:52 PM: Zoom closed unexpectedly. 
 Windows' own text: "app_crash (staged)"
-Possibly related changes in the 3 days before: Zoom Workplace 6.4.1 was installed (Thu 6:15:49 PM)
+Possibly related changes in the 3 days before: Zoom Workplace 6.4.1 was installed (Thu 11:09:52 PM)
 
 [get_event_details("1")]
-Event 1 at Fri 2:35:49 AM: Zoom closed unexpectedly. 
+Event 1 at Fri 7:29:52 AM: Zoom closed unexpectedly. 
 Windows' own text: "app_crash (staged)"
-Possibly related changes in the 3 days before: Zoom Workplace 6.4.1 was installed (Thu 6:15:49 PM)
+Possibly related changes in the 3 days before: Zoom Workplace 6.4.1 was installed (Thu 11:09:52 PM)
 
 [get_resource_history("60")]
 No resource data for that period.
 
 [get_changes("14")]
 Changes in the last 14 days (newest first):
-- Thu 6:15:49 PM: Zoom Workplace 6.4.1 was installed
+- Thu 11:09:52 PM: Zoom Workplace 6.4.1 was installed
 
 [get_network_history("2")]
 No network samples recorded for that period.
@@ -70,7 +70,7 @@ No network samples recorded for that period.
 [get_findings("")]
 Automatic pattern checks (hints):
 - Pattern: Zoom crashes started after a change on Thursday. Zoom Workplace 6.4.1 was installed on Thu Oct 8. Since then: 3 times; in the two weeks before: 0.
-- Known pattern 'An app closed unexpectedly' (3 event(s), last Sat 2:35:49 AM)
+- Known pattern 'An app closed unexpectedly' (3 event(s), last Sat 7:29:52 AM)
 
 Reply with JSON only:
 {"summary": "...", "likely_cause": "...", "confidence": "low|medium|high", "evidence": ["..."], "steps": ["..."], "needs_human": true|false}

@@ -27,19 +27,19 @@ Plain everyday language. No event IDs or error codes in summary or steps. Reply 
 COMPLAINT: "my printer won't print"
 
 WHAT RESMAN HAS RECORDED (last 7 days):
-- 1 Wi-Fi drops; most recent Thu 1:40:30 AM.
-  [event 1] Thu 1:40:30 AM: Wi-Fi disconnected
+- 1 Wi-Fi drops; most recent Thu 6:30:26 AM.
+  [event 1] Thu 6:30:26 AM: Wi-Fi disconnected
 - 0 harmless background warnings (ignored).
 - 0 installs/updates/driver changes.
-- Time now: Sat 3:40:30 AM.
+- Time now: Sat 8:30:26 AM.
 
 EVIDENCE (output of ResMan's tools, gathered for you):
 [get_health_events("168")]
 1 problem event(s) in the last 168 h (0 harmless warnings ignored):
-- [event 1] Thu 1:40:30 AM: Wi-Fi disconnected
+- [event 1] Thu 6:30:26 AM: Wi-Fi disconnected
 
 [get_event_details("1")]
-Event 1 at Thu 1:40:30 AM: Wi-Fi disconnected. 
+Event 1 at Thu 6:30:26 AM: Wi-Fi disconnected. 
 Windows' own text: "wifi_drop (staged)"
 No changes in the 3 days before mention a driver or Windows update.
 

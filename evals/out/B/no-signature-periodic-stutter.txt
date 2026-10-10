@@ -30,8 +30,8 @@ WHAT RESMAN HAS RECORDED (last 7 days):
 - No problem events, so there are no event ids to look up (resource, change and network history still exist).
 - 0 harmless background warnings (ignored).
 - 0 installs/updates/driver changes.
-- Resource samples every 10 s; latest Sat 3:28:38 AM: memory 55%, CPU 96%.
-- Time now: Sat 3:28:38 AM.
+- Resource samples every 10 s; latest Sat 8:29:00 AM: memory 55%, CPU 96%.
+- Time now: Sat 8:29:00 AM.
 
 EVIDENCE (output of ResMan's tools, gathered for you):
 [get_health_events("168")]
@@ -40,17 +40,17 @@ No problems were recorded in the last 168 hours (0 harmless background warnings 
 [get_resource_history("60")]
 Resource history, last 60 min (120 samples).
 Grew or appeared the most: nothing notable.
-CPU spikes (50%+ by one program): IndexMaxSvc (unknown program) jumped to 92% CPU 15 times, about every 4 min (last Sat 3:28:38 AM).
+CPU spikes (50%+ by one program): IndexMaxSvc (unknown program) jumped to 92% CPU 15 times, about every 4 min (last Sat 8:29:00 AM).
 Large but steady the whole time (less likely to explain a sudden problem): Google Chrome ~1500 MB.
-Peak memory 55% (Sat 2:29:08 AM), peak CPU 96%.
+Peak memory 55% (Sat 7:29:30 AM), peak CPU 96%.
 Over time, oldest first:
-- Sat 2:29:08 AM: memory 55% (peak 55%), CPU 16%. Busiest: IndexMaxSvc (unknown program) 7% CPU/400 MB/40 MB/s disk, Google Chrome 2% CPU/1500 MB
-- Sat 2:36:38 AM: memory 55% (peak 55%), CPU 21%. Busiest: IndexMaxSvc (unknown program) 13% CPU/400 MB/40 MB/s disk, Google Chrome 2% CPU/1500 MB
-- Sat 2:44:08 AM: memory 55% (peak 55%), CPU 21%. Busiest: IndexMaxSvc (unknown program) 13% CPU/400 MB/40 MB/s disk, Google Chrome 2% CPU/1500 MB
-- Sat 2:51:38 AM: memory 55% (peak 55%), CPU 21%. Busiest: IndexMaxSvc (unknown program) 13% CPU/400 MB/40 MB/s disk, Google Chrome 2% CPU/1500 MB
-- Sat 2:59:08 AM: memory 55% (peak 55%), CPU 21%. Busiest: IndexMaxSvc (unknown program) 13% CPU/400 MB/40 MB/s disk, Google Chrome 2% CPU/1500 MB
-- Sat 3:06:38 AM: memory 55% (peak 55%), CPU 21%. Busiest: IndexMaxSvc (unknown program) 13% CPU/400 MB/40 MB/s disk, Google Chrome 2% CPU/1500 MB
-- Sat 3:14:08 AM: memory 55% (peak 55%), CPU 21%. Busiest: IndexMaxSvc (unknown program) 13% CPU/400 MB/40 MB/s di ...(truncated)
+- Sat 7:29:30 AM: memory 55% (peak 55%), CPU 16%. Busiest: IndexMaxSvc (unknown program) 7% CPU/400 MB/40 MB/s disk, Google Chrome 2% CPU/1500 MB
+- Sat 7:37:00 AM: memory 55% (peak 55%), CPU 21%. Busiest: IndexMaxSvc (unknown program) 13% CPU/400 MB/40 MB/s disk, Google Chrome 2% CPU/1500 MB
+- Sat 7:44:30 AM: memory 55% (peak 55%), CPU 21%. Busiest: IndexMaxSvc (unknown program) 13% CPU/400 MB/40 MB/s disk, Google Chrome 2% CPU/1500 MB
+- Sat 7:52:00 AM: memory 55% (peak 55%), CPU 21%. Busiest: IndexMaxSvc (unknown program) 13% CPU/400 MB/40 MB/s disk, Google Chrome 2% CPU/1500 MB
+- Sat 7:59:30 AM: memory 55% (peak 55%), CPU 21%. Busiest: IndexMaxSvc (unknown program) 13% CPU/400 MB/40 MB/s disk, Google Chrome 2% CPU/1500 MB
+- Sat 8:07:00 AM: memory 55% (peak 55%), CPU 21%. Busiest: IndexMaxSvc (unknown program) 13% CPU/400 MB/40 MB/s disk, Google Chrome 2% CPU/1500 MB
+- Sat 8:14:30 AM: memory 55% (peak 55%), CPU 21%. Busiest: IndexMaxSvc (unknown program) 13% CPU/400 MB/40 MB/s di ...(truncated)
 
 [get_changes("14")]
 Nothing was installed, updated or changed in the last 14 days.

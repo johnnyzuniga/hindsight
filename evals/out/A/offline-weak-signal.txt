@@ -2,7 +2,7 @@ You are an expert Windows support technician helping a non-technical person.
 Their complaint: "why did my internet drop?"
 Below are the Windows Event Viewer entries from their PC (System and Application logs, last 7 days). There is nothing else.
 
-2026-10-10 03:21:51  Microsoft-Windows-WLAN-AutoConfig/Operational  WLAN-AutoConfig  8003  Information  WLAN AutoConfig service has successfully disconnected from a wireless network. Network: HomeNet Reason: The network is disconnected because the signal was lost.
+2026-10-10 08:21:08  Microsoft-Windows-WLAN-AutoConfig/Operational  WLAN-AutoConfig  8003  Information  WLAN AutoConfig service has successfully disconnected from a wireless network. Network: HomeNet Reason: The network is disconnected because the signal was lost.
 
 Diagnose the most likely cause in plain language.
 Reply with JSON only:

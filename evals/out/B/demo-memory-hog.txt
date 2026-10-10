@@ -27,57 +27,57 @@ Plain everyday language. No event IDs or error codes in summary or steps. Reply 
 COMPLAINT: "my drawing app keeps freezing and closing"
 
 WHAT RESMAN HAS RECORDED (last 7 days):
-- 2 crashes, 1 freezes; most recent Sat 3:25:58 AM.
-  [event 3] Sat 3:25:58 AM: SketchPad closed unexpectedly (x2)
-  [event 1] Sat 3:23:28 AM: SketchPad froze
+- 2 crashes, 1 freezes; most recent Sat 8:27:11 AM.
+  [event 3] Sat 8:27:11 AM: SketchPad closed unexpectedly (x2)
+  [event 1] Sat 8:24:41 AM: SketchPad froze
 - 0 harmless background warnings (ignored).
 - 0 installs/updates/driver changes.
-- Resource samples every 10 s; latest Sat 3:27:28 AM: memory 95%, CPU 14%.
-- Time now: Sat 3:27:28 AM.
+- Resource samples every 10 s; latest Sat 8:28:41 AM: memory 95%, CPU 14%.
+- Time now: Sat 8:28:41 AM.
 
 EVIDENCE (output of ResMan's tools, gathered for you):
 [get_health_events("168")]
 3 problem event(s) in the last 168 h (0 harmless warnings ignored):
-- [event 3] Sat 3:25:58 AM: SketchPad closed unexpectedly (x2 since Sat 3:25:28 AM)
-- [event 1] Sat 3:23:28 AM: SketchPad froze. Stopped responding for about 19 seconds.
+- [event 3] Sat 8:27:11 AM: SketchPad closed unexpectedly (x2 since Sat 8:26:41 AM)
+- [event 1] Sat 8:24:41 AM: SketchPad froze. Stopped responding for about 19 seconds.
 
 [get_event_details("3")]
-Event 3 at Sat 3:25:58 AM: SketchPad closed unexpectedly. 
+Event 3 at Sat 8:27:11 AM: SketchPad closed unexpectedly. 
 Windows' own text: "app_crash (staged)"
 The app's own error: System.OutOfMemoryException: Insufficient memory to continue the execution of the program.
-At that moment: memory 94% full, processor 14% busy. Biggest memory users: PhotoSync (unknown program) 8600 MB, brave (unknown program) 1800 MB, Windows Explorer 300 MB. Busiest: PhotoSync (unknown program) 6% CPU.
+At that moment: memory 94% full, processor 14% busy. Biggest memory users: PhotoSync (unknown program) 8600 MB, Brave browser 1800 MB, Windows Explorer 300 MB. Busiest: PhotoSync (unknown program) 6% CPU.
 No changes in the 3 days before mention 'SketchPad'.
 
 [get_event_details("2")]
-Event 2 at Sat 3:25:28 AM: SketchPad closed unexpectedly. 
+Event 2 at Sat 8:26:41 AM: SketchPad closed unexpectedly. 
 Windows' own text: "app_crash (staged)"
 The app's own error: System.OutOfMemoryException: Insufficient memory to continue the execution of the program.
-At that moment: memory 92% full, processor 14% busy. Biggest memory users: PhotoSync (unknown program) 8200 MB, brave (unknown program) 1800 MB, Windows Explorer 300 MB. Busiest: PhotoSync (unknown program) 6% CPU.
+At that moment: memory 92% full, processor 14% busy. Biggest memory users: PhotoSync (unknown program) 8200 MB, Brave browser 1800 MB, Windows Explorer 300 MB. Busiest: PhotoSync (unknown program) 6% CPU.
 No changes in the 3 days before mention 'SketchPad'.
 
 [get_event_details("1")]
-Event 1 at Sat 3:23:28 AM: SketchPad froze. Stopped responding for about 19 seconds.
+Event 1 at Sat 8:24:41 AM: SketchPad froze. Stopped responding for about 19 seconds.
 Windows' own text: "app_hang (staged)"
 Details: DurationSeconds=19
-At that moment: memory 86% full, processor 14% busy. Biggest memory users: PhotoSync (unknown program) 6600 MB, brave (unknown program) 1800 MB, Windows Explorer 300 MB. Busiest: PhotoSync (unknown program) 6% CPU.
-The minute before (34 samples): at -60s memory 83% and CPU 14%; memory peaked at 86% (-14s), CPU peaked at 14% (-60s). Busiest programs: PhotoSync (unknown program) (avg 6% CPU, memory 5800->6600 MB), brave (unknown program) (avg 2% CPU, memory 1800->1800 MB), Windows Explorer (avg 2% CPU, memory 300->300 MB).
+At that moment: memory 86% full, processor 14% busy. Biggest memory users: PhotoSync (unknown program) 6600 MB, Brave browser 1800 MB, Windows Explorer 300 MB. Busiest: PhotoSync (unknown program) 6% CPU.
+The minute before (34 samples): at -60s memory 83% and CPU 14%; memory peaked at 86% (-14s), CPU peaked at 14% (-60s). Busiest programs: PhotoSync (unknown program) (avg 6% CPU, memory 5800->6600 MB), Brave browser (avg 2% CPU, memory 1800->1800 MB), Windows Explorer (avg 2% CPU, memory 300->300 MB).
 No changes in the 3 days before mention 'SketchPad'.
 
 [get_resource_history("60")]
 Resource history, last 60 min (81 samples).
-Grew or appeared the most: PhotoSync (unknown program) 200->9000 MB (appeared Sat 3:15:28 AM).
+Grew or appeared the most: PhotoSync (unknown program) 200->9000 MB (appeared Sat 8:16:41 AM).
 CPU spikes (50%+ by one program): none.
-Large but steady the whole time (less likely to explain a sudden problem): brave (unknown program) ~1800 MB.
-Peak memory 95% (Sat 3:26:28 AM), peak CPU 14%.
+Large but steady the whole time (less likely to explain a sudden problem): Brave browser ~1800 MB.
+Peak memory 95% (Sat 8:27:41 AM), peak CPU 14%.
 Over time, oldest first:
-- Sat 2:47:28 AM: memory 62% (peak 62%), CPU 8%. Busiest: brave (unknown program) 2% CPU/1800 MB, Windows Explorer 2% CPU/300 MB
-- Sat 2:52:58 AM: memory 62% (peak 62%), CPU 8%. Busiest: brave (unknown program) 2% CPU/1800 MB, Windows Explorer 2% CPU/300 MB
-- Sat 2:58:28 AM: memory 62% (peak 62%), CPU 8%. Busiest: brave (unknown program) 2% CPU/1800 MB, Windows Explorer 2% CPU/300 MB
-- Sat 3:03:58 AM: memory 62% (peak 62%), CPU 8%. Busiest: brave (unknown program) 2% CPU/1800 MB, Windows Explorer 2% CPU/300 MB
-- Sat 3:09:28 AM: memory 62% (peak 62%), CPU 8%. Busiest: brave (unknown program) 2% CPU/1800 MB, Windows Explorer 2% CPU/300 MB
-- Sat 3:14:58 AM: memory 68% (peak 76%), CPU 13%. Busiest: PhotoSync (unknown program) 6% CPU/3800 MB, brave (unknown program) 2% CPU/1800 MB
-- Sat 3:20:28 AM: memory 84% (peak 92%), CPU 14%. Busiest: PhotoSync (unknown program) 6% CPU/8200 MB, brave (unknown program) 2% CPU/1800 MB
-- Sat 3:25:58 AM: memory 95% (peak 95%), CPU 14%. Busiest: PhotoSync (unknown program) 6% CPU/9000 ...(truncated)
+- Sat 7:48:41 AM: memory 62% (peak 62%), CPU 8%. Busiest: Brave browser 2% CPU/1800 MB, Windows Explorer 2% CPU/300 MB
+- Sat 7:54:11 AM: memory 62% (peak 62%), CPU 8%. Busiest: Brave browser 2% CPU/1800 MB, Windows Explorer 2% CPU/300 MB
+- Sat 7:59:41 AM: memory 62% (peak 62%), CPU 8%. Busiest: Brave browser 2% CPU/1800 MB, Windows Explorer 2% CPU/300 MB
+- Sat 8:05:11 AM: memory 62% (peak 62%), CPU 8%. Busiest: Brave browser 2% CPU/1800 MB, Windows Explorer 2% CPU/300 MB
+- Sat 8:10:41 AM: memory 62% (peak 62%), CPU 8%. Busiest: Brave browser 2% CPU/1800 MB, Windows Explorer 2% CPU/300 MB
+- Sat 8:16:11 AM: memory 68% (peak 76%), CPU 13%. Busiest: PhotoSync (unknown program) 6% CPU/3800 MB, Brave browser 2% CPU/1800 MB
+- Sat 8:21:41 AM: memory 84% (peak 92%), CPU 14%. Busiest: PhotoSync (unknown program) 6% CPU/8200 MB, Brave browser 2% CPU/1800 MB
+- Sat 8:27:11 AM: memory 95% (peak 95%), CPU 14%. Busiest: PhotoSync (unknown program) 6% CPU/9000 MB, Brave browser 2% CPU/1800 MB
 
 [get_changes("14")]
 Nothing was installed, updated or changed in the last 14 days.
@@ -88,8 +88,8 @@ No network samples recorded for that period.
 [get_findings("")]
 Automatic pattern checks (hints):
 - Pattern: SketchPad froze 1 time this week. In 1 freeze(s) with data, memory, CPU and disk all looked normal, so the cause is likely inside SketchPad itself.
-- Known pattern 'An app closed unexpectedly' (2 event(s), last Sat 3:25:58 AM)
-- Known pattern 'An app froze' (1 event(s), last Sat 3:23:28 AM)
+- Known pattern 'An app closed unexpectedly' (2 event(s), last Sat 8:27:11 AM)
+- Known pattern 'An app froze' (1 event(s), last Sat 8:24:41 AM)
 
 Reply with JSON only:
 {"summary": "...", "likely_cause": "...", "confidence": "low|medium|high", "evidence": ["..."], "steps": ["..."], "needs_human": true|false}
