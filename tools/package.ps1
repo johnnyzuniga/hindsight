@@ -1,4 +1,4 @@
-<#
+﻿<#
   Builds a portable Hindsight folder (and zip) that runs on a PC without .NET or the Windows App SDK installed.
 
     powershell -ExecutionPolicy Bypass -File tools\package.ps1 [-IncludeModel]

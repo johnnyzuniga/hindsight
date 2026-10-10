@@ -66,6 +66,7 @@ public sealed partial class IncidentsPage : Page, IRefreshable, IBanded
                 content.Children.Add(T(entry.Str("title") ?? "", "ItemTitle", 15));
                 content.Children.Add(T(count > 1 ? $"{when} · ×{count}" : when, "Muted", 13));
                 var b = new Button { Style = S("LinkButtonPlain"), Content = content, Tag = id, HorizontalAlignment = HorizontalAlignment.Stretch, HorizontalContentAlignment = HorizontalAlignment.Left };
+                Microsoft.UI.Xaml.Automation.AutomationProperties.SetName(b, $"{entry.Str("title")}, {when}{(count > 1 ? $", {count} times" : "")}");
                 b.Click += async (_, _) => await SelectAsync(id);
                 List.Children.Add(Rule(child: b, padding: new Thickness(0, 6, 0, 6)));
             }

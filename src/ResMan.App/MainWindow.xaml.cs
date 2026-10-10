@@ -52,11 +52,20 @@ public sealed partial class MainWindow : Window
             "ai" => (typeof(LocalAiPage), NavAi),
             _ => (typeof(OverviewPage), NavOverview),
         };
-        nav.IsChecked = true;
+        // Checking the menu item raises Checked -> OnNav; the guard stops that from navigating twice.
+        _navigating = true;
+        try { nav.IsChecked = true; }
+        finally { _navigating = false; }
         ContentFrame.Navigate(page, parameter);
     }
 
-    private void OnNav(object sender, RoutedEventArgs e) => Navigate((string)((FrameworkElement)sender).Tag);
+    private bool _navigating;
+
+    // Checked (not Click) so keyboard, Narrator and UI Automation selection navigate too.
+    private void OnNav(object sender, RoutedEventArgs e)
+    {
+        if (!_navigating) Navigate((string)((FrameworkElement)sender).Tag);
+    }
 
     private void OnTheme(object sender, RoutedEventArgs e) =>
         Theme.Set(Enum.Parse<ThemeMode>((string)((FrameworkElement)sender).Tag));

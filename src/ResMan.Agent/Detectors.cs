@@ -140,7 +140,7 @@ public sealed class ContextDetector(ServiceClient service, AgentState state, ILo
         var onBattery = power.ACLineStatus == 0;
 
         var profile = idleSeconds >= 300 ? Profiles.Idle
-            : fullscreen && app is not null && !NotGames.Contains(app) ? Profiles.Gaming
+            : fullscreen && app is not null && !NotGames.Contains(app) && !RuleValidator.IsOwnProcess(app) ? Profiles.Gaming // Hindsight's own window is never a game
             : onBattery ? Profiles.Battery
             : Profiles.Focus;
         return new ContextUpdate(profile, app, fullscreen, Math.Round(idleSeconds), onBattery);

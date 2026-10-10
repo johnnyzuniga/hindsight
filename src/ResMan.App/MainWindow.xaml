@@ -57,11 +57,11 @@
             </StackPanel>
 
             <StackPanel Grid.Row="1" x:Name="Nav" Spacing="0">
-                <RadioButton x:Name="NavOverview" Style="{StaticResource RailItem}" GroupName="Nav" Content="Overview" Tag="overview" Click="OnNav" AutomationProperties.Name="Overview" />
-                <RadioButton x:Name="NavAsk" Style="{StaticResource RailItem}" GroupName="Nav" Content="Ask" Tag="ask" Click="OnNav" />
-                <RadioButton x:Name="NavIncidents" Style="{StaticResource RailItem}" GroupName="Nav" Content="Incidents" Tag="incidents" Click="OnNav" />
-                <RadioButton x:Name="NavHistory" Style="{StaticResource RailItem}" GroupName="Nav" Content="History" Tag="history" Click="OnNav" />
-                <RadioButton x:Name="NavAi" Style="{StaticResource RailItem}" GroupName="Nav" Content="Local AI" Tag="ai" Click="OnNav" />
+                <RadioButton x:Name="NavOverview" Style="{StaticResource RailItem}" GroupName="Nav" Content="Overview" Tag="overview" Checked="OnNav" AutomationProperties.Name="Overview" />
+                <RadioButton x:Name="NavAsk" Style="{StaticResource RailItem}" GroupName="Nav" Content="Ask" Tag="ask" Checked="OnNav" />
+                <RadioButton x:Name="NavIncidents" Style="{StaticResource RailItem}" GroupName="Nav" Content="Incidents" Tag="incidents" Checked="OnNav" />
+                <RadioButton x:Name="NavHistory" Style="{StaticResource RailItem}" GroupName="Nav" Content="History" Tag="history" Checked="OnNav" />
+                <RadioButton x:Name="NavAi" Style="{StaticResource RailItem}" GroupName="Nav" Content="Local AI" Tag="ai" Checked="OnNav" />
             </StackPanel>
 
             <TextBlock Grid.Row="3" x:Name="StatusText" Style="{StaticResource Mono}" FontSize="11" LineHeight="19"
