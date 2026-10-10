@@ -12,6 +12,9 @@
     <!-- Unpackaged and self-contained: a plain exe next to the agent, no MSIX or runtime install needed. -->
     <WindowsPackageType>None</WindowsPackageType>
     <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+    <!-- Without this, `dotnet publish` of an unpackaged app leaves out ResMan.App.pri and the compiled XAML,
+         and the published window fails with "XAML parsing failed". No MSIX is produced. -->
+    <EnableMsixTooling>true</EnableMsixTooling>
     <SelfContained>true</SelfContained>
     <ApplicationIcon>Assets\ResMan.ico</ApplicationIcon>
   </PropertyGroup>

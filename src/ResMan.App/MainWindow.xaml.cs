@@ -26,6 +26,7 @@ public sealed partial class MainWindow : Window
         if (AppWindow.Presenter is OverlappedPresenter p) { p.PreferredMinimumWidth = 1000; p.PreferredMinimumHeight = 680; }
         AppWindow.Resize(new SizeInt32(1320, 860));
 
+        Theme.Transition = CrossfadeAsync;
         Theme.Changed += PaintThemeToggle;
         Theme.Changed += RefreshCaption;
         Theme.Attach(Root, AppWindow);
@@ -59,6 +60,58 @@ public sealed partial class MainWindow : Window
 
     private void OnTheme(object sender, RoutedEventArgs e) =>
         Theme.Set(Enum.Parse<ThemeMode>((string)((FrameworkElement)sender).Tag));
+
+    private bool _fading;
+
+    /// <summary>
+    /// Switches theme without a hard flash: snapshot the window, lay the snapshot on top, apply the new
+    /// theme underneath, then fade the snapshot out. Skipped when Windows animations are off.
+    /// </summary>
+    private async Task CrossfadeAsync(Action change)
+    {
+        if (_fading || !new Windows.UI.ViewManagement.UISettings().AnimationsEnabled || Root.ActualWidth < 1)
+        {
+            change();
+            return;
+        }
+        _fading = true;
+        var changed = false;
+        try
+        {
+            var shot = new Microsoft.UI.Xaml.Media.Imaging.RenderTargetBitmap();
+            await shot.RenderAsync(Root);
+            ThemeFade.Source = shot;
+            ThemeFade.Opacity = 1;
+            ThemeFade.Visibility = Visibility.Visible;
+            change();
+            changed = true;
+
+            var fade = new Microsoft.UI.Xaml.Media.Animation.DoubleAnimation
+            {
+                From = 1, To = 0, Duration = TimeSpan.FromMilliseconds(380),
+                EasingFunction = new Microsoft.UI.Xaml.Media.Animation.CubicEase { EasingMode = Microsoft.UI.Xaml.Media.Animation.EasingMode.EaseInOut },
+            };
+            Microsoft.UI.Xaml.Media.Animation.Storyboard.SetTarget(fade, ThemeFade);
+            Microsoft.UI.Xaml.Media.Animation.Storyboard.SetTargetProperty(fade, "Opacity");
+            var board = new Microsoft.UI.Xaml.Media.Animation.Storyboard();
+            board.Children.Add(fade);
+            var done = new TaskCompletionSource();
+            board.Completed += (_, _) => done.TrySetResult();
+            board.Begin();
+            await done.Task;
+        }
+        catch (Exception ex)
+        {
+            Log.Write($"Theme crossfade skipped: {ex.Message}");
+            if (!changed) change();
+        }
+        finally
+        {
+            ThemeFade.Visibility = Visibility.Collapsed;
+            ThemeFade.Source = null;
+            _fading = false;
+        }
+    }
 
     private void PaintThemeToggle()
     {

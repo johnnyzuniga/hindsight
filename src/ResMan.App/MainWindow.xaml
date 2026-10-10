@@ -90,6 +90,10 @@
         <!-- Drag area across the top; pages leave this strip free of controls. -->
         <Border x:Name="DragArea" Grid.ColumnSpan="2" Height="34" VerticalAlignment="Top" Background="Transparent" />
 
+        <!-- Theme crossfade: a snapshot of the old look, faded out over the new one. -->
+        <Image x:Name="ThemeFade" Grid.ColumnSpan="2" Stretch="Fill" IsHitTestVisible="False" Visibility="Collapsed"
+               AutomationProperties.AccessibilityView="Raw" />
+
         <!-- Live notice (a freeze just ended, a crash was recorded) -->
         <Border x:Name="Notice" Grid.Column="1" Visibility="Collapsed" HorizontalAlignment="Right" VerticalAlignment="Bottom"
                 Margin="0,0,28,28" MaxWidth="420" Padding="18,14" CornerRadius="10" Background="{ThemeResource InkBrush}">

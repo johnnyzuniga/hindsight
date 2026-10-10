@@ -23,20 +23,34 @@ public sealed class ThemeService
     public ThemeMode Mode { get; private set; } = Load();
     public event Action? Changed;
 
+    /// <summary>
+    /// Runs a theme change inside a visual transition (the window crossfades from the old look to the new).
+    /// Set by MainWindow; without it the change is instant.
+    /// </summary>
+    public Func<Action, Task>? Transition { get; set; }
+
+    private void Change(Action apply)
+    {
+        // Fade only when light/dark actually flips (Windows also raises this for accent-color changes).
+        if (Transition is { } t && _root is not null && _root.RequestedTheme != Target()) _ = t(apply);
+        else apply();
+    }
+
     public void Attach(FrameworkElement root, AppWindow window)
     {
         _root = root;
         _window = window;
         // Only matters while following Windows: repaint when the user flips the system theme.
-        _ui.ColorValuesChanged += (_, _) => root.DispatcherQueue.TryEnqueue(() => { if (Mode == ThemeMode.System) Apply(); });
+        _ui.ColorValuesChanged += (_, _) => root.DispatcherQueue.TryEnqueue(() => { if (Mode == ThemeMode.System) Change(Apply); });
         Apply();
     }
 
     public void Set(ThemeMode mode)
     {
+        if (mode == Mode) return;
         Mode = mode;
         Save(mode);
-        Apply();
+        Change(Apply);
     }
 
     /// <summary>Applies a theme for this session only (e.g. a demo started with --theme), without saving it.</summary>
@@ -51,16 +65,18 @@ public sealed class ThemeService
     private void Apply()
     {
         if (_root is null) return;
-        _root.RequestedTheme = Mode switch
-        {
-            ThemeMode.Light => ElementTheme.Light,
-            ThemeMode.Dark => ElementTheme.Dark,
-            // Default resolves against the app's theme, which follows Windows, so read it explicitly.
-            _ => SystemIsDark() ? ElementTheme.Dark : ElementTheme.Light,
-        };
+        _root.RequestedTheme = Target();
         // Caption button colors follow the page's band; MainWindow repaints them on Changed.
         Changed?.Invoke();
     }
+
+    private ElementTheme Target() => Mode switch
+    {
+        ThemeMode.Light => ElementTheme.Light,
+        ThemeMode.Dark => ElementTheme.Dark,
+        // Default resolves against the app's theme, which follows Windows, so read it explicitly.
+        _ => SystemIsDark() ? ElementTheme.Dark : ElementTheme.Light,
+    };
 
     private bool SystemIsDark()
     {
