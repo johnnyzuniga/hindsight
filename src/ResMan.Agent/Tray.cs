@@ -17,13 +17,13 @@ public static class Tray
     {
         Application.EnableVisualStyles();
         using var appIcon = AppLauncher.IconPath() is { } path ? new Icon(path, SystemInformation.SmallIconSize) : null;
-        using var icon = new NotifyIcon { Icon = appIcon ?? SystemIcons.Shield, Visible = true, Text = "ResMan" };
-        var header = new ToolStripMenuItem("ResMan is starting...") { Enabled = false };
+        using var icon = new NotifyIcon { Icon = appIcon ?? SystemIcons.Shield, Visible = true, Text = "Hindsight" };
+        var header = new ToolStripMenuItem("Hindsight is starting...") { Enabled = false };
         void OpenWindow(params string[] args)
         {
-            if (!AppLauncher.Open(out var problem, args)) icon.ShowBalloonTip(5000, "ResMan", problem ?? "The ResMan window couldn't open.", ToolTipIcon.Info);
+            if (!AppLauncher.Open(out var problem, args)) icon.ShowBalloonTip(5000, "Hindsight", problem ?? "The Hindsight window couldn't open.", ToolTipIcon.Info);
         }
-        var open = new ToolStripMenuItem("Open ResMan", null, (_, _) => OpenWindow()) { Font = new Font(SystemFonts.MenuFont!, FontStyle.Bold) };
+        var open = new ToolStripMenuItem("Open Hindsight", null, (_, _) => OpenWindow()) { Font = new Font(SystemFonts.MenuFont!, FontStyle.Bold) };
         icon.DoubleClick += (_, _) => OpenWindow();
         // Clicking a notification opens the window on the incidents page.
         icon.BalloonTipClicked += (_, _) => OpenWindow("--page", "incidents");
@@ -33,7 +33,7 @@ public static class Tray
             state.Paused = !state.Paused;
             pause.Text = state.Paused ? "Resume monitoring" : "Pause monitoring";
         };
-        var exit = new ToolStripMenuItem("Quit ResMan", null, (_, _) =>
+        var exit = new ToolStripMenuItem("Quit Hindsight", null, (_, _) =>
         {
             icon.Visible = false;
             Application.ExitThread();
@@ -57,7 +57,7 @@ public static class Tray
             try
             {
                 var a = host.Doctor?.Analyze();
-                var text = a?.Status.Headline ?? "Waiting for the ResMan service";
+                var text = a?.Status.Headline ?? "Waiting for the Hindsight service";
                 header.Text = text;
                 icon.Text = text.Length > 63 ? text[..63] : text;
 

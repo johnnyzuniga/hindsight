@@ -52,7 +52,7 @@ public sealed class AgentClient
             try { return await send(_http!); }
             catch (HttpRequestException) when (attempt == 0) { _http = null; _url = null; } // agent restarted: re-read agent.json
         }
-        throw new AgentException("ResMan isn't running. Start it from the Start menu or the tray, then try again.");
+        throw new AgentException("Hindsight isn't running. Start it from the Start menu or the tray, then try again.");
     }
 
     public async Task<JsonNode> GetAsync(string path, CancellationToken ct = default) =>
@@ -81,7 +81,7 @@ public sealed class AgentClient
             try { msg = text.Length > 0 ? JsonNode.Parse(text)?["error"]?.ToString() : null; } catch { }
             throw new AgentException(msg ?? (int)r.StatusCode switch
             {
-                503 => "ResMan is still starting up. Give it a few seconds.",
+                503 => "Hindsight is still starting up. Give it a few seconds.",
                 404 => "That record no longer exists.",
                 409 => "The AI is paused while you're gaming.",
                 _ => $"Something went wrong ({(int)r.StatusCode}).",

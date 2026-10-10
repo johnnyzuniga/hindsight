@@ -51,9 +51,9 @@ app.Use(async (ctx, next) =>
 app.UseWebSockets();
 
 var api = app.MapGroup("/api/v1");
-IResult NoData() => Results.Json(new { error = "The ResMan service hasn't collected any data yet. Is it running?" }, statusCode: 503);
+IResult NoData() => Results.Json(new { error = "The Hindsight service hasn't collected any data yet. Is it running?" }, statusCode: 503);
 IResult? GamingLockout(bool force) => state.Profile == Profiles.Gaming && !force
-    ? Results.Json(new { error = "ResMan's AI is paused while you're gaming so it doesn't slow your game down. Ask again afterwards, or add ?force=true." }, statusCode: 409)
+    ? Results.Json(new { error = "Hindsight's AI is paused while you're gaming so it doesn't slow your game down. Ask again afterwards, or add ?force=true." }, statusCode: 409)
     : null;
 
 api.MapGet("/status", async () =>
@@ -207,7 +207,7 @@ api.MapPost("/rules/suggest", async (SuggestRequest req, bool? force, Cancellati
 });
 
 api.MapGet("/rules", async () =>
-    await service.GetAsync(PipeTypes.RulesList, ResManJson.Default.ListStoredRule) is { } rules ? Results.Ok(rules) : Results.Json(new { error = "The ResMan service isn't running." }, statusCode: 503));
+    await service.GetAsync(PipeTypes.RulesList, ResManJson.Default.ListStoredRule) is { } rules ? Results.Ok(rules) : Results.Json(new { error = "The Hindsight service isn't running." }, statusCode: 503));
 
 api.MapPost("/rules", async (RuleProposal rule) =>
 {
@@ -268,7 +268,7 @@ api.MapPost("/fixes", async (FixRequest req) =>
     var fix = new FixAttempt(0, issue.Id, first.Kind, app, req.Label.Trim(), DateTime.UtcNow);
     var r = await service.SendAsync(PipeTypes.FixApplied, fix, ResManJson.Default.FixAttempt);
     return r.Ok
-        ? Results.Ok(new { id = r.Payload?.GetInt64(), tracking = $"ResMan will compare how often {FixOutcomes.Noun(first.Kind)} happen before and after this." })
+        ? Results.Ok(new { id = r.Payload?.GetInt64(), tracking = $"Hindsight will compare how often {FixOutcomes.Noun(first.Kind)} happen before and after this." })
         : Results.Json(new { error = r.Error }, statusCode: 503);
 });
 
@@ -298,7 +298,7 @@ api.Map("/live", async (HttpContext ctx) =>
 await app.StartAsync();
 var url = app.Urls.First();
 WriteAgentInfo(url, token);
-app.Logger.LogInformation("ResMan agent listening on {Url}. {Model}", url, model.Describe);
+app.Logger.LogInformation("Hindsight agent listening on {Url}. {Model}", url, model.Describe);
 
 Tray.Start(host, state, () => _ = app.StopAsync());
 await app.WaitForShutdownAsync();

@@ -38,7 +38,7 @@ public static class AppLauncher
         var exe = FindExe();
         if (exe is null)
         {
-            problem = "The ResMan window isn't installed next to the agent. For now, run resman.exe in a terminal.";
+            problem = "The Hindsight window isn't installed next to the agent. For now, run resman.exe in a terminal.";
             return false;
         }
         try
@@ -50,7 +50,7 @@ public static class AppLauncher
         }
         catch (Exception ex)
         {
-            problem = $"The ResMan window couldn't start: {ex.Message}";
+            problem = $"The Hindsight window couldn't start: {ex.Message}";
             return false;
         }
     }

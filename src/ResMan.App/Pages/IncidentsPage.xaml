@@ -47,7 +47,7 @@
                     <StackPanel x:Name="List" />
                     <Border Style="{StaticResource RowRule}" />
                     <TextBlock x:Name="ListEmpty" Style="{StaticResource Muted}" Margin="0,12,0,0" Visibility="Collapsed"
-                               Text="Nothing has gone wrong in the last week. ResMan keeps recording in the background." />
+                               Text="Nothing has gone wrong in the last week. Hindsight keeps recording in the background." />
                 </StackPanel>
             </ScrollViewer>
 
@@ -76,7 +76,7 @@
                                 </Canvas>
                                 <TextBlock x:Name="NoReplay" Style="{StaticResource Muted}" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center"
                                            MaxWidth="420" Visibility="Collapsed"
-                                           Text="There's no black-box recording for this one. ResMan saves the minute before each freeze and crash it sees from now on." />
+                                           Text="There's no black-box recording for this one. Hindsight saves the minute before each freeze and crash it sees from now on." />
                             </Grid>
                         </Border>
                         <Grid>

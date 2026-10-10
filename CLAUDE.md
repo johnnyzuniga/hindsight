@@ -1,4 +1,6 @@
-# ResMan
+# Hindsight (code name ResMan)
+
+Product name is **Hindsight**; projects, executables, namespaces and data folders keep the working name ResMan. User-facing text says Hindsight, but the prompt text the model sees still says ResMan, so don't change it without re-running the evals. MIT licensed.
 
 A "black box recorder" for Windows freezes and crashes, with a local AI that investigates them. Built for a Local AI hackathon. The judging rubric weights local-AI implementation and problem/usefulness at 25% each, so the model must do the reasoning, with code supplying the evidence.
 

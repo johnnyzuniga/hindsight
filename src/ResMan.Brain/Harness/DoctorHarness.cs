@@ -313,12 +313,12 @@ public sealed class DoctorHarness(DoctorService doctor, IModelProvider model)
     {
         var kinds = SymptomKinds(symptom);
         if (related.Count == 0 && kinds.Count > 0 && !a.Events.Any(e => kinds.Contains(e.Kind)))
-            return new($"ResMan hasn't recorded any {string.Join(" or ", kinds.Select(FixOutcomes.Noun).Distinct())} on this PC yet.",
+            return new($"Hindsight hasn't recorded any {string.Join(" or ", kinds.Select(FixOutcomes.Noun).Distinct())} on this PC yet.",
                 "Not sure: there's nothing on record to go on.", "low",
-                ["If it happens again, ResMan will capture what your PC was doing at that moment, so check back afterwards."],
-                false, [], [], false, 0, "AI is off; answered from ResMan's records.");
+                ["If it happens again, Hindsight will capture what your PC was doing at that moment, so check back afterwards."],
+                false, [], [], false, 0, "AI is off; answered from Hindsight's records.");
         if (related.Count == 0)
-            return new("ResMan's built-in checks don't explain this. The local AI can investigate the raw evidence when it's turned on.",
+            return new("Hindsight's built-in checks don't explain this. The local AI can investigate the raw evidence when it's turned on.",
                 "Not sure.", "low", [], false, actions, [], false, 0, "AI is off.");
         var top = related[0];
         return new($"{top.Title}. {top.Explanation}", top.Evidence ?? "See the steps below.", top.Evidence is null ? "low" : "medium",

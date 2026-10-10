@@ -26,7 +26,7 @@ public static class FreezeExplainer
         var headline = $"{app} froze for about {seconds:0} seconds";
         var explanation = causes.Count switch
         {
-            0 when snapshot is null => "ResMan couldn't capture what your PC was doing at that moment.",
+            0 when snapshot is null => "Hindsight couldn't capture what your PC was doing at that moment.",
             0 => $"Your PC wasn't short on memory, processor or disk at that moment, so the cause is probably inside {app} itself.",
             _ => $"At that moment, {Join(causes)}.",
         };

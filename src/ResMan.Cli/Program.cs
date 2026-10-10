@@ -13,14 +13,14 @@ if (args.Length == 0 || args[0] is "help" or "-h" or "--help") return Help();
 
 // Hidden helpers used by `simulate`.
 if (args[0] == "_hang") { SimulatedHang(); return 0; }
-if (args[0] == "_crash") { Thread.Sleep(500); throw new InvalidOperationException("ResMan simulated crash (this is expected)."); }
+if (args[0] == "_crash") { Thread.Sleep(500); throw new InvalidOperationException("Hindsight simulated crash (this is expected)."); }
 
 if (args[0] == "simulate") return Simulate(args.ElementAtOrDefault(1));
 
 var api = Api.Connect();
 if (api is null)
 {
-    Err("The ResMan agent isn't running. Start it with: dotnet run --project src/ResMan.Agent");
+    Err("The Hindsight agent isn't running. Start it with: dotnet run --project src/ResMan.Agent");
     return 1;
 }
 
@@ -65,17 +65,17 @@ static int Help()
     Console.WriteLine("""
         resman: ResMan, the black box recorder for PC freezes and crashes
 
-          status                 Health, service and agent status, and ResMan's own footprint
+          status                 Health, service and agent status, and Hindsight's own footprint
           issues                 Problems that need attention, with likely causes and fixes
           timeline [days]        Plain-language history of what happened (default 7 days)
           changes [days]         What changed: installs, updates, drivers, startup items (default 14)
           drives                 Drive health (status, wear, errors, temperature)
           why "<symptom>"        Ask what's wrong, e.g. resman why "my pc froze"
           explain-event <id>     Explain one event from the timeline
-          fixed <issue-id> "<what you did>"   Record a fix so ResMan can tell whether it worked
+          fixed <issue-id> "<what you did>"   Record a fix so Hindsight can tell whether it worked
           fixes                  Fixes tried, and how often the problem happened before and after
           report [file.html]     Save a shareable report for whoever fixes this PC, and open it
-          findings               Patterns found by ResMan's built-in analyzers
+          findings               Patterns found by Hindsight's built-in analyzers
           scan                   Check for changes and drive health right now
           process <name>         What a program is and whether it's safe to limit
           watch                  Live events as they happen (Ctrl+C to stop)
@@ -97,7 +97,7 @@ static async Task<int> Status(Api api)
 {
     var s = await api.Get("status");
     var h = s["health"];
-    if (h is null) Warn("No data yet: the ResMan service hasn't created its database. Is it running?");
+    if (h is null) Warn("No data yet: the Hindsight service hasn't created its database. Is it running?");
     else
     {
         var level = h["level"]!.GetValue<string>();
@@ -120,7 +120,7 @@ static async Task<int> Status(Api api)
     Console.WriteLine($"  Agent:    {agent["workingSetMb"]} MB, profile '{agent["profile"]}'{(agent["paused"]!.GetValue<bool>() ? ", PAUSED" : "")}, foreground: {agent["foregroundApp"] ?? "-"}");
     var ai = s["ai"]!;
     Console.WriteLine($"  AI:       {ai["describe"]}{(ai["lastRunUtc"] is { } t ? $", last ran {Ago(t.GetValue<DateTime>())}" : "")}");
-    Console.WriteLine($"  ResMan is using {s["footprint"]!["totalMb"]} MB in total (the AI isn't counted while it's unloaded)\n");
+    Console.WriteLine($"  Hindsight is using {s["footprint"]!["totalMb"]} MB in total (the AI isn't counted while it's unloaded)\n");
     return 0;
 }
 
@@ -133,7 +133,7 @@ static async Task<int> Issues(Api api)
         var sev = i!["severity"]!.GetValue<string>();
         Color(SevColor(sev), $"\n  [{sev}] {i["title"]}");
         Console.WriteLine($"  {i["explanation"]}");
-        if (i["evidence"] is { } ev) Console.WriteLine($"  What ResMan saw: {ev}");
+        if (i["evidence"] is { } ev) Console.WriteLine($"  What Hindsight saw: {ev}");
         foreach (var f in i["fixes"]!.AsArray())
             Console.WriteLine($"    -> {f!["label"]}{(f["uri"] is { } u ? $"  ({u})" : "")}");
         if (i["needsHuman"]!.GetValue<bool>()) Color(ConsoleColor.Magenta, "    This may be a hardware problem worth getting checked.");
@@ -262,7 +262,7 @@ static async Task<int> Ai(Api api)
     Console.WriteLine($"  While loaded: RAM {sc["privateMb"]?.ToString() ?? "-"} MB, VRAM {sc["vramMb"]?.ToString() ?? "-"} MB");
     Console.WriteLine($"  Timings:   load {Ms(t["loadMs"])}, last inference {Ms(t["lastInferenceMs"])}, {t["tokensPerSecond"]?.GetValue<double>().ToString("0") ?? "-"} tokens/s, last question {Ms(t["lastQuestionMs"])}");
     Console.WriteLine($"  Unloads after {a["idleUnloadSeconds"]} s idle");
-    Console.WriteLine($"  ResMan without AI: {rm["totalWithoutAiMb"]} MB (agent {rm["agentMb"]} + service {rm["serviceMb"]}); right now: {rm["totalNowMb"]} MB");
+    Console.WriteLine($"  Hindsight without AI: {rm["totalWithoutAiMb"]} MB (agent {rm["agentMb"]} + service {rm["serviceMb"]}); right now: {rm["totalNowMb"]} MB");
     Dim($"  Network used by AI: {a["networkUsedByAi"]}\n");
     return 0;
 
@@ -339,10 +339,10 @@ static async Task<int> Ask(Api api, string request, bool apply, bool force)
     Console.WriteLine($"  Why: {rule["reason"]}");
     if (!s["valid"]!.GetValue<bool>())
     {
-        Color(ConsoleColor.Red, $"  Rejected by ResMan's safety checks: {string.Join(" ", s["errors"]!.AsArray())}");
+        Color(ConsoleColor.Red, $"  Rejected by Hindsight's safety checks: {string.Join(" ", s["errors"]!.AsArray())}");
         return 1;
     }
-    Color(ConsoleColor.Green, "  Passed ResMan's safety checks.");
+    Color(ConsoleColor.Green, "  Passed Hindsight's safety checks.");
     if (!apply) { Dim("  Add --apply to save it. Rules run in dry-run mode for now.\n"); return 0; }
     var added = await api.Post("rules", rule);
     Console.WriteLine($"  Saved as rule #{added["id"]}. See what it would do with: resman dry-run\n");
@@ -383,7 +383,7 @@ static async Task<int> ProcessInfo(Api api, string name)
         Console.WriteLine($"\n  {i["title"]} ({i["publisher"]})\n  {i["what"]}\n  {i["notes"]}\n  Safe to limit: {(i["safeToLimit"]!.GetValue<bool>() ? "yes" : "no")}");
     if (p["binary"] is { } b)
         Console.WriteLine($"\n  Running from: {b["path"]}\n  {b["description"]} by {b["company"] ?? "unknown"}; {(b["signer"] is { } sg ? $"signed by {sg}" : "not signed")}; {b["location"]}");
-    if (p["isProtected"]!.GetValue<bool>()) Color(ConsoleColor.Yellow, "  Protected: ResMan will never change this process.");
+    if (p["isProtected"]!.GetValue<bool>()) Color(ConsoleColor.Yellow, "  Protected: Hindsight will never change this process.");
     Console.WriteLine();
     return 0;
 }
@@ -485,7 +485,7 @@ static int Simulate(string? what)
     switch (what)
     {
         case "freeze":
-            Console.WriteLine("Opening a test window that will freeze for 20 seconds. Keep it in front so ResMan sees it.");
+            Console.WriteLine("Opening a test window that will freeze for 20 seconds. Keep it in front so Hindsight sees it.");
             Process.Start(self, "_hang")?.WaitForExit();
             Console.WriteLine("Done. Check `resman timeline` in a few seconds.");
             return 0;
@@ -507,7 +507,7 @@ static int Simulate(string? what)
 static void SimulatedHang()
 {
     Application.EnableVisualStyles();
-    var form = new Form { Text = "ResMan test: this window will freeze", Width = 520, Height = 180, StartPosition = FormStartPosition.CenterScreen, TopMost = true };
+    var form = new Form { Text = "Hindsight test: this window will freeze", Width = 520, Height = 180, StartPosition = FormStartPosition.CenterScreen, TopMost = true };
     form.Controls.Add(new Label { Text = "This window will stop responding for 20 seconds.\nClick on it or try to move it so Windows notices.", Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter });
     form.Shown += async (_, _) =>
     {

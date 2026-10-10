@@ -18,7 +18,7 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <StackPanel Spacing="12" VerticalAlignment="Bottom">
-                    <TextBlock x:Name="BandLabel" Style="{StaticResource BandLabel}" Text="ASK RESMAN · ON THIS PC" />
+                    <TextBlock x:Name="BandLabel" Style="{StaticResource BandLabel}" Text="ASK HINDSIGHT · ON THIS PC" />
                     <TextBlock x:Name="Headline" Style="{StaticResource Headline}" FontSize="44" LineHeight="46" Text="What's going wrong?" />
                 </StackPanel>
                 <StackPanel x:Name="Numbers" Grid.Column="1" Orientation="Horizontal" Spacing="26" VerticalAlignment="Bottom" Visibility="Collapsed">
@@ -44,7 +44,7 @@
                 <StackPanel Spacing="22">
                     <!-- Idle: a few starting points -->
                     <StackPanel x:Name="IdlePanel" Spacing="10">
-                        <TextBlock Style="{StaticResource Lead}" Text="Describe what happened in your own words. The AI on this PC looks through what ResMan recorded, picks what to check, and tells you what it found." />
+                        <TextBlock Style="{StaticResource Lead}" Text="Describe what happened in your own words. The AI on this PC looks through what Hindsight recorded, picks what to check, and tells you what it found." />
                         <TextBlock Style="{StaticResource SectionLabel}" Margin="0,8,0,0" Text="FOR EXAMPLE" />
                         <StackPanel x:Name="Examples" />
                     </StackPanel>
@@ -111,7 +111,7 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <TextBox x:Name="AskBox" Style="{StaticResource AskBox}" PlaceholderText="Tell ResMan what's wrong, in your own words"
+            <TextBox x:Name="AskBox" Style="{StaticResource AskBox}" PlaceholderText="Tell Hindsight what's wrong, in your own words"
                      AutomationProperties.Name="Describe what's wrong" KeyDown="OnAskKey" />
             <Button x:Name="AskButton" Grid.Column="1" Style="{StaticResource PrimaryButton}" MinHeight="48" Content="Investigate" Click="OnAsk" />
         </Grid>

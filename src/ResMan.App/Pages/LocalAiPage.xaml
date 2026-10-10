@@ -44,7 +44,7 @@
                         <TextBlock Style="{StaticResource SectionLabel}" Text="IS THE DOCTOR THE HOG?" />
                         <Grid x:Name="HogTable" />
                         <TextBlock Style="{StaticResource Body}" FontSize="15" Margin="0,10,0,0" Foreground="{ThemeResource InkSoftBrush}"
-                                   Text="Most of the time ResMan only records. The AI loads when you ask, and lets go of its memory 30 seconds after your last question." />
+                                   Text="Most of the time Hindsight only records. The AI loads when you ask, and lets go of its memory 30 seconds after your last question." />
                     </StackPanel>
                     <StackPanel>
                         <TextBlock Style="{StaticResource SectionLabel}" Text="GRAPHICS MEMORY IN USE BY THE AI" />

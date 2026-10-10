@@ -53,7 +53,7 @@ public sealed partial class HistoryPage : Page, IRefreshable, IBanded
 
             Fixes.Children.Clear();
             if (fixes.Count == 0)
-                Fixes.Children.Add(Rule(strong: true, child: T("When you fix something, press “I fixed this” on the Overview. ResMan then checks whether the problem really stopped.", "Muted")));
+                Fixes.Children.Add(Rule(strong: true, child: T("When you fix something, press “I fixed this” on the Overview. Hindsight then checks whether the problem really stopped.", "Muted")));
             foreach (var f in fixes)
             {
                 var verdict = f.Str("verdict");
@@ -91,7 +91,7 @@ public sealed partial class HistoryPage : Page, IRefreshable, IBanded
                 if (d.Num("wearPercent") is { } w) bits.Add($"{w:0}% worn");
                 if (d.Num("temperatureC") is { } c) bits.Add($"{c:0}°C");
                 if (d.Num("readErrorsTotal") is { } re && re > 0) bits.Add($"{re:0} read errors");
-                if (bits.Count == 0) bits.Add("Wear and error counters need ResMan to run as administrator");
+                if (bits.Count == 0) bits.Add("Wear and error counters need Hindsight to run as administrator");
                 left.Children.Add(T(string.Join(" · ", bits), "Muted"));
                 g.Add(left.At(0));
                 g.Add(T(healthy ? "Healthy" : d.Str("healthStatus") ?? "Unknown", healthy ? "ItemTitle" : "SignalNumeral", 16).Also(t => t.VerticalAlignment = VerticalAlignment.Center).At(1));

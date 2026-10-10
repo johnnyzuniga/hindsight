@@ -51,7 +51,7 @@ public static class HelperReport
         foreach (var i in a.Issues)
         {
             sb.Append($"""<div class="issue"><div class="sev {i.Severity}">{H(i.Severity)}</div><strong>{H(i.Title)}</strong><p>{H(i.Explanation)}</p>""");
-            if (i.Evidence is not null) sb.Append($"<p><strong>What ResMan saw:</strong> {H(i.Evidence)}</p>");
+            if (i.Evidence is not null) sb.Append($"<p><strong>What Hindsight saw:</strong> {H(i.Evidence)}</p>");
             if (i.Fixes.Count > 0)
                 sb.Append("<strong>Suggested fixes</strong><ul>" + string.Concat(i.Fixes.Select(f => $"<li>{H(f.Label)}</li>")) + "</ul>");
             if (i.NeedsHuman) sb.Append("""<p class="human">This may be a hardware problem worth having checked.</p>""");

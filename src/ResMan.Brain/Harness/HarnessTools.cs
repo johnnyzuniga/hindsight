@@ -54,7 +54,7 @@ public sealed class HarnessTools(DoctorService doctor)
         "get_resource_history" => $"Memory and CPU history, last {Num(input, 30, 2, 24 * 60):0} min",
         "get_changes" => "Recent installs, updates and drivers",
         "get_network_history" => "Network history",
-        "get_findings" => "ResMan's built-in checks",
+        "get_findings" => "Hindsight's built-in checks",
         "search_knowledge" => $"Knowledge base: \"{input.Trim()}\"",
         "inspect_binary" or "lookup_process" => $"The {RuleValidator.NormalizeProcessName(input.Trim())} program file",
         "get_top_processes" => "Programs running right now",

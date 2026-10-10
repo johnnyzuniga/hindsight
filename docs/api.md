@@ -1,4 +1,4 @@
-# ResMan Agent API (v1)
+# Hindsight Agent API (v1)
 
 The Agent runs as the signed-in user and serves a local API that any UI (WinUI, React Native, Flutter, or the `resman` CLI) uses.
 

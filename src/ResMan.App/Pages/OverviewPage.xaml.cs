@@ -68,8 +68,8 @@ public sealed partial class OverviewPage : Page, IRefreshable, IBanded
         {
             ErrorText.Text = ex.Message;
             ErrorText.Visibility = Visibility.Visible;
-            Headline.Text = "ResMan isn't running yet.";
-            Detail.Text = "Start the ResMan service and agent, then this page fills in by itself.";
+            Headline.Text = "Hindsight isn't running yet.";
+            Detail.Text = "Start the Hindsight service and agent, then this page fills in by itself.";
             Paint(animate: false);
         }
         catch (Exception ex) { Log.Write($"Overview: {ex}"); }
@@ -162,7 +162,7 @@ public sealed partial class OverviewPage : Page, IRefreshable, IBanded
         OpenList.Children.Clear();
         if (issues.Count == 0)
         {
-            OpenList.Children.Add(Rule(child: T("Nothing needs your attention. ResMan keeps recording in the background.", "Muted")));
+            OpenList.Children.Add(Rule(child: T("Nothing needs your attention. Hindsight keeps recording in the background.", "Muted")));
             return;
         }
         var delay = 0;
@@ -207,7 +207,7 @@ public sealed partial class OverviewPage : Page, IRefreshable, IBanded
         var note = T("", "Muted");
         var panel = new StackPanel { Spacing = 10, Width = 320 };
         panel.Children.Add(T("What did you do?", "ItemTitle", 16));
-        panel.Children.Add(T($"ResMan will watch whether “{title}” stops happening.", "Muted"));
+        panel.Children.Add(T($"Hindsight will watch whether “{title}” stops happening.", "Muted"));
         panel.Children.Add(box);
         panel.Children.Add(save);
         panel.Children.Add(note);

@@ -104,11 +104,11 @@ public sealed partial class MainWindow : Window
                 "loading" => "AI WAKING UP",
                 _ => ai["enabled"]?.GetValue<bool>() == false ? "AI OFF" : "AI ASLEEP",
             };
-            StatusText.Text = $"RECORDING\nRESMAN {s["footprint"].Num("totalMb"):0} MB\n{state}\nNOTHING LEAVES THIS PC";
+            StatusText.Text = $"RECORDING\nHINDSIGHT {s["footprint"].Num("totalMb"):0} MB\n{state}\nNOTHING LEAVES THIS PC";
         }
         catch (AgentException)
         {
-            StatusText.Text = "RESMAN ISN'T RUNNING\nSTART IT FROM THE TRAY";
+            StatusText.Text = "HINDSIGHT ISN'T RUNNING\nSTART IT FROM THE TRAY";
         }
         catch (Exception ex) { Log.Write($"Status: {ex.Message}"); }
     }
@@ -127,7 +127,7 @@ public sealed partial class MainWindow : Window
             else
             {
                 NoticeTitle.Text = data.Str("title") ?? "Something just happened";
-                NoticeText.Text = data.Str("detail") ?? "ResMan recorded what your PC was doing.";
+                NoticeText.Text = data.Str("detail") ?? "Hindsight recorded what your PC was doing.";
                 _noticeEventId = data.Long("id");
             }
             NoticeAction.Visibility = _noticeEventId is null ? Visibility.Collapsed : Visibility.Visible;

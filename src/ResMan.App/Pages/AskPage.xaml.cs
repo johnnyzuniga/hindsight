@@ -278,7 +278,7 @@ public sealed partial class AskPage : Page, IBanded
         _checks = Math.Max(_checks, trace.Count);
         BandLabel.Text = usedModel
             ? $"LIKELY CAUSE · {_checks} CHECK{(_checks == 1 ? "" : "S")} · {seconds:0.0} S · {confidence.ToUpperInvariant()} CONFIDENCE"
-            : "FROM RESMAN'S BUILT-IN CHECKS · AI IS OFF";
+            : "FROM HINDSIGHT'S BUILT-IN CHECKS · AI IS OFF";
         var cause = a.Str("likelyCause");
         SetHeadline(cause is { Length: > 3 } && !cause.StartsWith("Not sure", StringComparison.OrdinalIgnoreCase) ? cause : a.Str("summary") ?? "");
         SecondsNum.Text = seconds.ToString("0.0", CultureInfo.CurrentCulture);

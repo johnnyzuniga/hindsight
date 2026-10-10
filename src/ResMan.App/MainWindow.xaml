@@ -2,7 +2,7 @@
     x:Class="ResMan.App.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="ResMan">
+    Title="Hindsight">
 
     <Grid x:Name="Root" Background="{ThemeResource GroundBrush}">
         <Grid.Resources>
@@ -52,7 +52,7 @@
                     <Path Data="M5,20 L11,20 L16,11 L20,8.5 L25,8.5" Stroke="#E8590C" StrokeThickness="2.6"
                           StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round" />
                 </Grid>
-                <TextBlock Text="ResMan" FontFamily="{StaticResource WordsFont}" FontWeight="ExtraBold" FontSize="19"
+                <TextBlock Text="Hindsight" FontFamily="{StaticResource WordsFont}" FontWeight="ExtraBold" FontSize="19"
                            CharacterSpacing="-20" VerticalAlignment="Center" Foreground="{ThemeResource InkBrush}" />
             </StackPanel>
 
