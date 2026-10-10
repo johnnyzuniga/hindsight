@@ -1,0 +1,23 @@
+{
+  "Summary": "The PC is freezing and files open slowly due to drive health issues. Drive errors are recurring and may be slowing performance.",
+  "likely_cause": "Failing hard drive causing system instability and slow file access.",
+  "Confidence": "high",
+  "Evidence": [
+    "On Sat 1:34:38 AM, the drive reported 184 read errors with a health warning.",
+    "Drive errors occurred on Fri and Thu evenings, showing a pattern of recurring issues.",
+    "No resource usage data available to show CPU or memory spikes during freezes.",
+    "Recent installs or updates not recorded, ruling out software changes as cause."
+  ],
+  "Steps": [
+    "Do not ignore the drive error warnings \u2014 back up files immediately.",
+    "Stop using the PC until the drive is checked by a professional.",
+    "Contact a technician to test or replace the hard drive.",
+    "Wait for a hardware failure warning before attempting to use the PC further."
+  ],
+  "needs_human": true,
+  "tools": [
+    "get_event_details(3)",
+    "get_resource_history(30)",
+    "get_resource_history(60)"
+  ]
+}

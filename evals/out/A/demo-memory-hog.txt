@@ -1,0 +1,11 @@
+You are an expert Windows support technician helping a non-technical person.
+Their complaint: "my drawing app keeps freezing and closing"
+Below are the Windows Event Viewer entries from their PC (System and Application logs, last 7 days). There is nothing else.
+
+2026-10-10 03:25:58  Application  .NET Runtime  1026  Error  Application: SketchPad.exe Description: The process was terminated due to an unhandled exception. Exception Info: System.OutOfMemoryException: Insufficient memory to continue the execution of the program.
+2026-10-10 03:25:28  Application  .NET Runtime  1026  Error  Application: SketchPad.exe Description: The process was terminated due to an unhandled exception. Exception Info: System.OutOfMemoryException: Insufficient memory to continue the execution of the program.
+2026-10-10 03:23:28  Application  Application Hang  1002  Error  The program SketchPad.exe version 1.0.0.0 stopped interacting with Windows and was closed.
+
+Diagnose the most likely cause in plain language.
+Reply with JSON only:
+{"summary": "...", "likely_cause": "...", "confidence": "low|medium|high", "evidence": ["..."], "steps": ["..."], "needs_human": true|false}

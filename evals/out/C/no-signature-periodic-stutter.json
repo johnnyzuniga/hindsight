@@ -1,0 +1,22 @@
+{
+  "Summary": "The PC stutters due to a recurring spike in CPU usage from an unknown service called IndexMaxSvc, which peaks every few minutes.",
+  "likely_cause": "An unknown program named IndexMaxSvc is causing periodic high CPU usage every 4 minutes, leading to stutters.",
+  "Confidence": "high",
+  "Evidence": [
+    "On Sat 3:28:38 AM, IndexMaxSvc used 92% CPU, matching the stutter timing.",
+    "IndexMaxSvc spikes occurred every 4 minutes over the last 300 minutes.",
+    "Memory usage remained stable at 55%, ruling out memory-related stutters.",
+    "Google Chrome was steady at 2% CPU and 1500 MB, not causing the spikes."
+  ],
+  "Steps": [
+    "Check if IndexMaxSvc appears in the list of startup programs and disable it if it\u0027s not needed.",
+    "Look up the program\u0027s name by opening Task Manager and right-clicking on IndexMaxSvc to see its details.",
+    "Search online for \u0027IndexMaxSvc\u0027 to find if it\u0027s known as a tool or malware.",
+    "Restart the PC after disabling the service to see if stutters stop."
+  ],
+  "needs_human": false,
+  "tools": [
+    "get_resource_history(300)",
+    "get_top_processes()"
+  ]
+}

@@ -1,0 +1,71 @@
+<Page
+    x:Class="ResMan.App.Pages.LocalAiPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Background="Transparent">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Border x:Name="Band" CornerRadius="0,0,0,14" Padding="36,46,36,24">
+            <Grid ColumnSpacing="32">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Spacing="12" VerticalAlignment="Bottom">
+                    <TextBlock x:Name="BandLabel" Style="{StaticResource BandLabel}" Text="LOCAL AI" />
+                    <TextBlock x:Name="Headline" Style="{StaticResource Headline}" Text="The AI lives on your graphics card. It never phones home." />
+                </StackPanel>
+                <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="26" VerticalAlignment="Bottom">
+                    <StackPanel>
+                        <TextBlock x:Name="BytesNum" Style="{StaticResource Numeral}" Text="0" />
+                        <TextBlock x:Name="BytesLabel" FontFamily="{StaticResource WordsFont}" FontWeight="SemiBold" FontSize="14" Text="bytes sent online" />
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock x:Name="TpsNum" Style="{StaticResource Numeral}" Text="–" />
+                        <TextBlock x:Name="TpsLabel" FontFamily="{StaticResource WordsFont}" FontWeight="SemiBold" FontSize="14" Text="tokens a second" />
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <Grid Padding="36,24,36,24" ColumnSpacing="44">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.3*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Spacing="26">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource SectionLabel}" Text="IS THE DOCTOR THE HOG?" />
+                        <Grid x:Name="HogTable" />
+                        <TextBlock Style="{StaticResource Body}" FontSize="15" Margin="0,10,0,0" Foreground="{ThemeResource InkSoftBrush}"
+                                   Text="Most of the time ResMan only records. The AI loads when you ask, and lets go of its memory 30 seconds after your last question." />
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource SectionLabel}" Text="GRAPHICS MEMORY IN USE BY THE AI" />
+                        <Border Style="{StaticResource StrongRule}" Padding="0,12,0,0">
+                            <StackPanel Orientation="Horizontal" Spacing="12">
+                                <TextBlock x:Name="VramNum" Style="{StaticResource SmallNumeral}" FontSize="56" Text="0" />
+                                <TextBlock x:Name="VramLabel" Style="{StaticResource Muted}" FontSize="16" VerticalAlignment="Bottom" Margin="0,0,0,12" Text="GB while answering" />
+                            </StackPanel>
+                        </Border>
+                        <TextBlock x:Name="VramNote" Style="{StaticResource Body}" FontSize="15" Foreground="{ThemeResource SignalTextBrush}" Margin="0,10,0,0" Visibility="Collapsed" />
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Spacing="14">
+                    <TextBlock Style="{StaticResource SectionLabel}" Text="FOR THE CURIOUS" />
+                    <Grid x:Name="Details" />
+                    <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,8,0,0">
+                        <Button x:Name="PreloadButton" Style="{StaticResource PrimaryButton}" Content="Keep it warm for 30 min" Click="OnPreload" />
+                    </StackPanel>
+                    <TextBlock x:Name="PreloadNote" Style="{StaticResource Muted}" Visibility="Collapsed" />
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Page>

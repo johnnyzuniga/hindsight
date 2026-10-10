@@ -1,0 +1,23 @@
+{
+  "Summary": "Zoom crashes frequently, especially after a recent update. The most recent crash occurred right after a new version of Zoom Workplace was installed.",
+  "likely_cause": "A recent update to Zoom Workplace version 6.4.1 may have caused instability, leading to crashes.",
+  "Confidence": "high",
+  "Evidence": [
+    "Zoom crashed at 2:35:49 AM on Saturday, the same day a new version (6.4.1) was installed.",
+    "Previous crashes occurred on Friday, within a short time of the update.",
+    "No resource usage data available to show high CPU or memory use during crashes.",
+    "Only one change recorded: installation of Zoom Workplace 6.4.1 on Thursday."
+  ],
+  "Steps": [
+    "Uninstall Zoom Workplace and restart your computer.",
+    "Download and install the latest stable version of Zoom from the official website.",
+    "Check if crashes stop after the update.",
+    "Reinstall Zoom if it still crashes, and avoid using it during updates."
+  ],
+  "needs_human": false,
+  "tools": [
+    "get_event_details(3)",
+    "get_resource_history(30)",
+    "get_resource_history(60)"
+  ]
+}

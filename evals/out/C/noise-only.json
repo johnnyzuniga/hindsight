@@ -1,0 +1,23 @@
+{
+  "Summary": "Your PC is not dying. No crashes, freezes, or errors were found in the last 48 hours.",
+  "likely_cause": "No evidence of hardware failure, software issues, or system instability.",
+  "Confidence": "high",
+  "Evidence": [
+    "No problems recorded in the last 48 hours (no freezes, crashes, or blue screens).",
+    "40 background warnings were harmless and not related to system failure.",
+    "No recent installs, updates, or driver changes detected.",
+    "Resource history shows no spikes in CPU or memory usage."
+  ],
+  "Steps": [
+    "Check for new programs or updates by reviewing the list of installed apps.",
+    "Restart your PC and observe if any errors appear during startup.",
+    "Run a disk check (via Command Prompt) if you notice slow performance later.",
+    "Keep an eye on the Event Viewer for any new entries over the next few days."
+  ],
+  "needs_human": false,
+  "tools": [
+    "get_health_events(48)",
+    "get_resource_history(30)",
+    "get_event_details(no_event_id_provided)"
+  ]
+}

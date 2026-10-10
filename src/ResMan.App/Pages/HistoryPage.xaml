@@ -1,0 +1,74 @@
+<Page
+    x:Class="ResMan.App.Pages.HistoryPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Background="Transparent">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Border x:Name="Band" CornerRadius="0,0,0,14" Padding="36,46,36,24">
+            <Grid ColumnSpacing="32">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Spacing="12" VerticalAlignment="Bottom">
+                    <TextBlock x:Name="BandLabel" Style="{StaticResource BandLabel}" Text="HISTORY · LAST 30 DAYS" />
+                    <TextBlock x:Name="Headline" Style="{StaticResource Headline}" Text="What went wrong, what changed, and what worked." />
+                </StackPanel>
+                <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="26" VerticalAlignment="Bottom">
+                    <StackPanel>
+                        <TextBlock x:Name="IncidentNum" Style="{StaticResource Numeral}" Text="–" />
+                        <TextBlock x:Name="IncidentLabel" FontFamily="{StaticResource WordsFont}" FontWeight="SemiBold" FontSize="14" Text="incidents" />
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock x:Name="ChangeNum" Style="{StaticResource Numeral}" Text="–" />
+                        <TextBlock x:Name="ChangeLabel" FontFamily="{StaticResource WordsFont}" FontWeight="SemiBold" FontSize="14" Text="changes" />
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <Grid Padding="36,24,36,24" ColumnSpacing="44">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.3*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Spacing="26">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource SectionLabel}" Text="DID YOUR FIXES WORK?" />
+                        <StackPanel x:Name="Fixes" />
+                        <Border Style="{StaticResource RowRule}" />
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource SectionLabel}" Text="WHAT CHANGED ON THIS PC" />
+                        <StackPanel x:Name="Changes" />
+                        <Border Style="{StaticResource RowRule}" />
+                        <TextBlock x:Name="RoutineNote" Style="{StaticResource Muted}" Margin="0,8,0,0" />
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Spacing="26">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource SectionLabel}" Text="DRIVES" />
+                        <StackPanel x:Name="Drives" />
+                        <Border Style="{StaticResource RowRule}" />
+                    </StackPanel>
+                    <StackPanel Spacing="10">
+                        <TextBlock Style="{StaticResource SectionLabel}" Text="GETTING HELP" />
+                        <Border Style="{StaticResource StrongRule}" Padding="0,12,0,0">
+                            <TextBlock Style="{StaticResource Body}" FontSize="15"
+                                       Text="Make a one-page report for whoever helps you with your PC: what went wrong, what changed, and what you've already tried. It opens in your browser, ready to print or save as PDF." />
+                        </Border>
+                        <Button x:Name="ReportButton" Style="{StaticResource PrimaryButton}" HorizontalAlignment="Left" Content="Make a report for a helper" Click="OnReport" />
+                        <TextBlock x:Name="ReportNote" Style="{StaticResource Muted}" Visibility="Collapsed" />
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Page>

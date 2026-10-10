@@ -1,0 +1,23 @@
+{
+  "Summary": "Your PC crashed with a blue screen linked to the NVIDIA graphics driver. The issue started after a driver update.",
+  "likely_cause": "A recent NVIDIA graphics driver update (nvlddmkm.sys) caused instability, leading to blue screens and driver resets.",
+  "Confidence": "high",
+  "Evidence": [
+    "Blue screen at Fri 10:32:05 PM with BugcheckCode 0x116 and param1=nvlddmkm.sys",
+    "Graphics driver reset at Fri 2:32:05 AM, shortly after NVIDIA driver installation on Tue 4:12:05 PM",
+    "No memory or CPU usage data available during the crash period",
+    "Only one driver change recorded in the past 3 days"
+  ],
+  "Steps": [
+    "Uninstall the latest NVIDIA graphics driver from Device Manager.",
+    "Restart your PC to let Windows reinstall a stable driver automatically.",
+    "Check if the blue screen returns after restart.",
+    "If it does, contact NVIDIA support for driver troubleshooting."
+  ],
+  "needs_human": false,
+  "tools": [
+    "get_event_details(4)",
+    "get_resource_history(30)",
+    "get_event_details(3)"
+  ]
+}

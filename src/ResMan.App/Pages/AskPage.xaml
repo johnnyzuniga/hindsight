@@ -1,0 +1,119 @@
+<Page
+    x:Class="ResMan.App.Pages.AskPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Background="Transparent">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Border x:Name="Band" CornerRadius="0,0,0,14" Padding="36,46,36,24">
+            <Grid ColumnSpacing="32">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Spacing="12" VerticalAlignment="Bottom">
+                    <TextBlock x:Name="BandLabel" Style="{StaticResource BandLabel}" Text="ASK RESMAN · ON THIS PC" />
+                    <TextBlock x:Name="Headline" Style="{StaticResource Headline}" FontSize="44" LineHeight="46" Text="What's going wrong?" />
+                </StackPanel>
+                <StackPanel x:Name="Numbers" Grid.Column="1" Orientation="Horizontal" Spacing="26" VerticalAlignment="Bottom" Visibility="Collapsed">
+                    <StackPanel>
+                        <TextBlock x:Name="SecondsNum" Style="{StaticResource Numeral}" FontSize="92" LineHeight="78" Text="0.0" />
+                        <TextBlock x:Name="SecondsLabel" FontFamily="{StaticResource WordsFont}" FontWeight="SemiBold" FontSize="14" Opacity="0.8" Text="seconds so far" />
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock x:Name="StepsNum" Style="{StaticResource Numeral}" FontSize="92" LineHeight="78" Text="0" />
+                        <TextBlock x:Name="StepsLabel" FontFamily="{StaticResource WordsFont}" FontWeight="SemiBold" FontSize="14" Opacity="0.8" Text="checks, up to 5" />
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <ScrollViewer Grid.Row="1" x:Name="Scroller" VerticalScrollBarVisibility="Auto">
+            <Grid Padding="36,22,36,24" ColumnSpacing="44">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.6*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Spacing="22">
+                    <!-- Idle: a few starting points -->
+                    <StackPanel x:Name="IdlePanel" Spacing="10">
+                        <TextBlock Style="{StaticResource Lead}" Text="Describe what happened in your own words. The AI on this PC looks through what ResMan recorded, picks what to check, and tells you what it found." />
+                        <TextBlock Style="{StaticResource SectionLabel}" Margin="0,8,0,0" Text="FOR EXAMPLE" />
+                        <StackPanel x:Name="Examples" />
+                    </StackPanel>
+
+                    <!-- The answer -->
+                    <StackPanel x:Name="AnswerPanel" Spacing="22" Visibility="Collapsed">
+                        <TextBlock x:Name="Summary" Style="{StaticResource Lead}" />
+                        <StackPanel x:Name="EvidenceSection">
+                            <TextBlock Style="{StaticResource SectionLabel}" Text="WHAT IT RELIED ON" />
+                            <StackPanel x:Name="EvidenceList" />
+                            <Border Style="{StaticResource RowRule}" />
+                        </StackPanel>
+                        <StackPanel x:Name="StepsSection">
+                            <TextBlock Style="{StaticResource SectionLabel}" Text="WHAT TO DO" />
+                            <StackPanel x:Name="FixSteps" />
+                            <Border Style="{StaticResource RowRule}" />
+                            <StackPanel x:Name="Actions" Orientation="Horizontal" Spacing="10" Margin="0,14,0,0" />
+                        </StackPanel>
+                        <TextBlock x:Name="Note" Style="{StaticResource Muted}" Visibility="Collapsed" />
+                        <Button x:Name="ShowWork" Style="{StaticResource OutlineButton}" HorizontalAlignment="Left" Content="Show how the AI worked this out" Click="OnShowWork" />
+                    </StackPanel>
+
+                    <!-- Live investigation -->
+                    <StackPanel x:Name="WorkPanel" Visibility="Collapsed">
+                        <TextBlock Style="{StaticResource SectionLabel}" Text="WHAT IT CHECKED, AND WHAT IT FOUND" />
+                        <StackPanel x:Name="StepList" />
+                        <Border Style="{StaticResource RowRule}" />
+                        <TextBlock x:Name="SlowNote" Style="{StaticResource Muted}" Margin="0,10,0,0" Visibility="Collapsed" />
+                    </StackPanel>
+                    <TextBlock x:Name="ErrorText" Style="{StaticResource Body}" Foreground="{ThemeResource SignalTextBrush}" Visibility="Collapsed" />
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Spacing="14">
+                    <StackPanel x:Name="RunningPanel">
+                        <TextBlock Style="{StaticResource SectionLabel}" Text="RUNNING ON THIS PC" />
+                        <Grid x:Name="RunningTable" />
+                        <TextBlock Style="{StaticResource Muted}" Margin="0,14,0,0"
+                                   Text="The AI picks what to check next. It looks at least twice before it answers, and it cites what it found." />
+                    </StackPanel>
+
+                    <StackPanel x:Name="FollowPanel" Visibility="Collapsed" Spacing="12">
+                        <TextBlock Style="{StaticResource SectionLabel}" Text="KEEP ASKING" />
+                        <StackPanel x:Name="Thread" Spacing="14" />
+                        <TextBlock x:Name="FollowStatus" Style="{StaticResource Mono}" Visibility="Collapsed" />
+                        <Grid ColumnSpacing="8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBox x:Name="FollowBox" Style="{StaticResource AskBox}" PlaceholderText="Ask about this answer"
+                                     AutomationProperties.Name="Ask a follow-up question" KeyDown="OnFollowKey" />
+                            <Button Grid.Column="1" Style="{StaticResource PrimaryButton}" Width="48" MinHeight="48" Padding="0"
+                                    AutomationProperties.Name="Send follow-up question" Click="OnFollow">
+                                <FontIcon Glyph="&#xE72A;" FontSize="16" />
+                            </Button>
+                        </Grid>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+
+        <Grid Grid.Row="2" Padding="36,14,36,20" ColumnSpacing="12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="AskBox" Style="{StaticResource AskBox}" PlaceholderText="Tell ResMan what's wrong, in your own words"
+                     AutomationProperties.Name="Describe what's wrong" KeyDown="OnAskKey" />
+            <Button x:Name="AskButton" Grid.Column="1" Style="{StaticResource PrimaryButton}" MinHeight="48" Content="Investigate" Click="OnAsk" />
+        </Grid>
+    </Grid>
+</Page>

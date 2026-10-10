@@ -1,0 +1,10 @@
+You are an expert Windows support technician helping a non-technical person.
+Their complaint: "I keep getting a message that my computer is low on memory"
+Below are the Windows Event Viewer entries from their PC (System and Application logs, last 7 days). There is nothing else.
+
+2026-10-10 03:28:17  System  Microsoft-Windows-Resource-Exhaustion-Detector  2004  Warning  Windows successfully diagnosed a low virtual memory condition. The following programs consumed the most virtual memory: chrome.exe (8283750400 bytes), Teams.exe (996147200 bytes)
+2026-10-10 02:08:17  System  Microsoft-Windows-Resource-Exhaustion-Detector  2004  Warning  Windows successfully diagnosed a low virtual memory condition. The following programs consumed the most virtual memory: chrome.exe (7759462400 bytes), Teams.exe (943718400 bytes)
+
+Diagnose the most likely cause in plain language.
+Reply with JSON only:
+{"summary": "...", "likely_cause": "...", "confidence": "low|medium|high", "evidence": ["..."], "steps": ["..."], "needs_human": true|false}

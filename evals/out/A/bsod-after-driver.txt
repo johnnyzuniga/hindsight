@@ -1,0 +1,13 @@
+You are an expert Windows support technician helping a non-technical person.
+Their complaint: "my pc keeps crashing with a blue screen since this week"
+Below are the Windows Event Viewer entries from their PC (System and Application logs, last 7 days). There is nothing else.
+
+2026-10-09 22:32:05  System  Microsoft-Windows-WER-SystemErrorReporting  1001  Error  The computer has rebooted from a bugcheck. The bugcheck was: 0x116 (nvlddmkm.sys).
+2026-10-09 02:32:05  System  Display  4101  Warning  Display driver nvlddmkm stopped responding and has successfully recovered.
+2026-10-08 01:32:05  System  Microsoft-Windows-WER-SystemErrorReporting  1001  Error  The computer has rebooted from a bugcheck. The bugcheck was: 0x116 (nvlddmkm.sys).
+2026-10-07 00:32:05  System  Display  4101  Warning  Display driver nvlddmkm stopped responding and has successfully recovered.
+2026-10-06 16:12:05  System  Microsoft-Windows-UserPnp  20001  Information  Driver Management concluded the process to install driver NVIDIA driver nvlddmkm 32.0.15.6094 with status 0.
+
+Diagnose the most likely cause in plain language.
+Reply with JSON only:
+{"summary": "...", "likely_cause": "...", "confidence": "low|medium|high", "evidence": ["..."], "steps": ["..."], "needs_human": true|false}

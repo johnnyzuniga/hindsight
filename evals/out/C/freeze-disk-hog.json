@@ -1,0 +1,22 @@
+{
+  "Summary": "Excel freezes when saving due to high memory usage from both Excel and OneDrive, especially during save operations.",
+  "likely_cause": "Microsoft Excel and OneDrive are both consuming significant memory, with Excel growing to 910 MB and OneDrive using 260 MB at the time of freeze.",
+  "Confidence": "high",
+  "Evidence": [
+    "On Excel freeze at Sat 3:32:03 AM, memory was 63% and Excel used 910 MB.",
+    "Excel memory usage grew from 900 MB to 910 MB over the prior 30 minutes.",
+    "OneDrive used 260 MB and 10% CPU at the same time, with high disk activity.",
+    "No recent installs or updates were recorded, and no other programs spiked CPU."
+  ],
+  "Steps": [
+    "Close OneDrive by right-clicking its icon in the taskbar and selecting \u0027Exit\u0027.",
+    "Try saving your Excel file again without OneDrive running.",
+    "Save the file in a different location, like a folder on your desktop, to reduce cloud sync load.",
+    "If the freeze stops, consider disabling OneDrive sync for the folder where Excel is saving."
+  ],
+  "needs_human": false,
+  "tools": [
+    "get_event_details(2)",
+    "get_resource_history(300)"
+  ]
+}

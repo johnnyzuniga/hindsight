@@ -1,0 +1,106 @@
+<Window
+    x:Class="ResMan.App.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="ResMan">
+
+    <Grid x:Name="Root" Background="{ThemeResource GroundBrush}">
+        <Grid.Resources>
+            <Style x:Key="SegmentButton" TargetType="Button">
+                <Setter Property="Width" Value="38" />
+                <Setter Property="Height" Value="32" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="CornerRadius" Value="6" />
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="Foreground" Value="{ThemeResource SecondaryBrush}" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Grid x:Name="Root" Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}">
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Normal" />
+                                        <VisualState x:Name="PointerOver"><VisualState.Setters><Setter Target="Root.Opacity" Value="0.8" /></VisualState.Setters></VisualState>
+                                        <VisualState x:Name="Pressed"><VisualState.Setters><Setter Target="Root.Opacity" Value="0.65" /></VisualState.Setters></VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{TemplateBinding Foreground}" />
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Left menu -->
+        <Grid Padding="28,18,0,22" RowSpacing="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,0,0,30">
+                <Grid Width="30" Height="30">
+                    <Border CornerRadius="7" Background="{ThemeResource InkBrush}" />
+                    <Path Data="M5,20 L11,20 L16,11 L20,8.5 L25,8.5" Stroke="#E8590C" StrokeThickness="2.6"
+                          StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round" />
+                </Grid>
+                <TextBlock Text="ResMan" FontFamily="{StaticResource WordsFont}" FontWeight="ExtraBold" FontSize="19"
+                           CharacterSpacing="-20" VerticalAlignment="Center" Foreground="{ThemeResource InkBrush}" />
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" x:Name="Nav" Spacing="0">
+                <RadioButton x:Name="NavOverview" Style="{StaticResource RailItem}" GroupName="Nav" Content="Overview" Tag="overview" Click="OnNav" AutomationProperties.Name="Overview" />
+                <RadioButton x:Name="NavAsk" Style="{StaticResource RailItem}" GroupName="Nav" Content="Ask" Tag="ask" Click="OnNav" />
+                <RadioButton x:Name="NavIncidents" Style="{StaticResource RailItem}" GroupName="Nav" Content="Incidents" Tag="incidents" Click="OnNav" />
+                <RadioButton x:Name="NavHistory" Style="{StaticResource RailItem}" GroupName="Nav" Content="History" Tag="history" Click="OnNav" />
+                <RadioButton x:Name="NavAi" Style="{StaticResource RailItem}" GroupName="Nav" Content="Local AI" Tag="ai" Click="OnNav" />
+            </StackPanel>
+
+            <TextBlock Grid.Row="3" x:Name="StatusText" Style="{StaticResource Mono}" FontSize="11" LineHeight="19"
+                       Margin="0,0,0,14" TextWrapping="Wrap" Text="CONNECTING…" />
+
+            <Border Grid.Row="4" HorizontalAlignment="Left" BorderBrush="{ThemeResource HairlineBrush}" BorderThickness="1" CornerRadius="8" Padding="3">
+                <StackPanel Orientation="Horizontal" Spacing="2" AutomationProperties.Name="Theme">
+                    <Button x:Name="ThemeSystem" Style="{StaticResource SegmentButton}" Click="OnTheme" Tag="System"
+                            AutomationProperties.Name="Follow Windows theme" ToolTipService.ToolTip="Follow Windows">
+                        <FontIcon Glyph="&#xE7F4;" FontSize="15" />
+                    </Button>
+                    <Button x:Name="ThemeLight" Style="{StaticResource SegmentButton}" Click="OnTheme" Tag="Light"
+                            AutomationProperties.Name="Light theme" ToolTipService.ToolTip="Light">
+                        <FontIcon Glyph="&#xE706;" FontSize="15" />
+                    </Button>
+                    <Button x:Name="ThemeDark" Style="{StaticResource SegmentButton}" Click="OnTheme" Tag="Dark"
+                            AutomationProperties.Name="Dark theme" ToolTipService.ToolTip="Dark">
+                        <FontIcon Glyph="&#xE708;" FontSize="15" />
+                    </Button>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <Frame x:Name="ContentFrame" Grid.Column="1" />
+
+        <!-- Drag area across the top; pages leave this strip free of controls. -->
+        <Border x:Name="DragArea" Grid.ColumnSpan="2" Height="34" VerticalAlignment="Top" Background="Transparent" />
+
+        <!-- Live notice (a freeze just ended, a crash was recorded) -->
+        <Border x:Name="Notice" Grid.Column="1" Visibility="Collapsed" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                Margin="0,0,28,28" MaxWidth="420" Padding="18,14" CornerRadius="10" Background="{ThemeResource InkBrush}">
+            <StackPanel Spacing="8">
+                <TextBlock x:Name="NoticeTitle" FontFamily="{StaticResource WordsFont}" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{ThemeResource OnInkBrush}" />
+                <TextBlock x:Name="NoticeText" FontFamily="{StaticResource WordsFont}" FontSize="14" TextWrapping="Wrap" Foreground="{ThemeResource OnInkBrush}" Opacity="0.8" />
+                <StackPanel Orientation="Horizontal" Spacing="16">
+                    <Button x:Name="NoticeAction" Style="{StaticResource LinkButtonPlain}" Foreground="{ThemeResource OnInkBrush}" Content="Ask why →" Click="OnNoticeAction" />
+                    <Button Style="{StaticResource LinkButtonPlain}" Foreground="{ThemeResource OnInkBrush}" Opacity="0.7" Content="Dismiss" Click="OnNoticeDismiss" />
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

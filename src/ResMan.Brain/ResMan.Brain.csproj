@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\ResMan.Core\ResMan.Core.csproj" />
+    <ProjectReference Include="..\ResMan.Data\ResMan.Data.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="ResMan.Tests" />
+  </ItemGroup>
+</Project>

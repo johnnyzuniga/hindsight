@@ -1,0 +1,23 @@
+{
+  "Summary": "The laptop shuts down unexpectedly during gaming, likely due to overheating. No recent software changes or resource spikes were found, but heat-related slowdowns and shutdowns occurred repeatedly.",
+  "likely_cause": "Overheating during gaming causes the system to shut down unexpectedly to prevent damage.",
+  "Confidence": "high",
+  "Evidence": [
+    "Unexpected shutdown at Sat 12:33:21 AM with no driver or update changes",
+    "Repeated heat slowdowns and shutdowns over the past 7 days",
+    "Resource history not available, but heat events are consistent with gaming use",
+    "Pattern of shutdowns coinciding with gaming activity (implied by context)"
+  ],
+  "Steps": [
+    "Clean the laptop\u0027s vents and fans with a dry cloth to improve airflow.",
+    "Ensure the laptop is placed on a hard surface, not on soft materials like beds or pillows.",
+    "Use a cooling pad if available when playing games.",
+    "Check if the laptop has a temperature monitor app (like HWMonitor) to confirm overheating during use."
+  ],
+  "needs_human": false,
+  "tools": [
+    "get_event_details(29)",
+    "get_resource_history(30)",
+    "get_resource_history(60)"
+  ]
+}

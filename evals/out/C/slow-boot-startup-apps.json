@@ -1,0 +1,24 @@
+{
+  "Summary": "The PC is taking longer to start, especially after a recent Steam-related startup change.",
+  "likely_cause": "Steam and its associated programs are now starting with Windows, adding to boot time.",
+  "Confidence": "high",
+  "Evidence": [
+    "On startup, the PC took 152 seconds on Saturday, matching a recent change.",
+    "Steam and two related items were added to startup on Wednesday.",
+    "Previous slow startups (141 seconds) occurred after similar changes.",
+    "No resource spikes or hardware issues were recorded during boot."
+  ],
+  "Steps": [
+    "Open Task Manager and go to the \u0027Startup\u0027 tab.",
+    "Find Steam or any related programs listed there.",
+    "Right-click each and select \u0027Disable\u0027 to stop them from starting with Windows.",
+    "Restart the PC and check if startup time improves."
+  ],
+  "needs_human": false,
+  "tools": [
+    "get_event_details(3)",
+    "get_resource_history(30)",
+    "get_changes(7)",
+    "get_event_details(2)"
+  ]
+}

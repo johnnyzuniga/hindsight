@@ -1,0 +1,166 @@
+[
+  {
+    "id": "demo-memory-hog",
+    "note": "Multi-signal + unknown process: SketchPad freezes and crashes while PhotoSync (not in the knowledge base) grows to 9 GB.",
+    "complaint": "my drawing app keeps freezing and closing",
+    "series": { "minutes": 40, "baseMem": 62, "baseCpu": 8, "steady": [ { "name": "brave", "mb": 1800 }, { "name": "explorer", "mb": 300 } ],
+      "grow": { "name": "PhotoSync", "fromMinutesAgo": 12, "toMb": 9000, "memTo": 95 } },
+    "events": [
+      { "kind": "app_hang", "minutesAgo": 4, "app": "SketchPad.exe", "data": { "DurationSeconds": "19" }, "snapshotAt": true, "replay": true },
+      { "kind": "app_crash", "minutesAgo": 2, "app": "SketchPad.exe", "data": { "Exception": "System.OutOfMemoryException: Insufficient memory to continue the execution of the program." }, "snapshotAt": true },
+      { "kind": "app_crash", "minutesAgo": 1.5, "app": "SketchPad.exe", "data": { "Exception": "System.OutOfMemoryException: Insufficient memory to continue the execution of the program." }, "snapshotAt": true }
+    ],
+    "expect": { "all": [ ["photosync"], ["memory", "ram"] ], "forbid": ["virus", "malware"] }
+  },
+  {
+    "id": "no-signature-periodic-stutter",
+    "note": "No events at all, no signature can match. Only resource history shows an unknown process spiking CPU every few minutes.",
+    "complaint": "my pc stutters for a second every few minutes",
+    "series": { "minutes": 60, "baseMem": 55, "baseCpu": 10, "steady": [ { "name": "chrome", "mb": 1500 } ],
+      "spikes": { "name": "IndexMaxSvc", "everyMinutes": 4, "cpu": 92, "mb": 400 } },
+    "events": [],
+    "expect": { "all": [ ["indexmax"] ], "forbid": ["virus", "close google chrome", "close chrome", "windows indexing service", "windows service"] }
+  },
+  {
+    "id": "offline-weak-signal",
+    "note": "Network: Wi-Fi signal fades, router stops answering, Wi-Fi drops. Diagnosable fully offline.",
+    "complaint": "why did my internet drop?",
+    "network": [
+      { "minutesAgo": 30, "connectivity": "internet", "ssid": "HomeNet", "bars": 4, "router": true, "pingMs": 3 },
+      { "minutesAgo": 20, "connectivity": "internet", "ssid": "HomeNet", "bars": 3, "router": true, "pingMs": 9 },
+      { "minutesAgo": 12, "connectivity": "internet", "ssid": "HomeNet", "bars": 1, "router": true, "pingMs": 180 },
+      { "minutesAgo": 9, "connectivity": "constrained", "ssid": "HomeNet", "bars": 1, "router": false },
+      { "minutesAgo": 8, "connectivity": "none", "ssid": null, "bars": null, "router": false },
+      { "minutesAgo": 1, "connectivity": "none", "ssid": null, "bars": null, "router": false }
+    ],
+    "events": [
+      { "kind": "network_change", "minutesAgo": 8, "summary": "Wi-Fi disconnected from 'HomeNet'", "data": { "From": "constrained", "To": "none", "SignalBarsBefore": "1", "RecentSignalBars": "4,3,1,1" } },
+      { "kind": "wifi_drop", "minutesAgo": 8, "data": { "Reason": "The network is disconnected because the signal was lost.", "SSID": "HomeNet" } }
+    ],
+    "expect": { "all": [ ["signal", "weak", "far from", "distance"] ], "forbid": ["internet provider is down", "isp outage"] }
+  },
+  {
+    "id": "offline-isp-not-wifi",
+    "note": "Network: Wi-Fi strong and router answering, but no internet. The problem is beyond the router (provider/modem), not the Wi-Fi.",
+    "complaint": "my internet stopped working",
+    "network": [
+      { "minutesAgo": 30, "connectivity": "internet", "ssid": "HomeNet", "bars": 5, "router": true, "pingMs": 2 },
+      { "minutesAgo": 15, "connectivity": "local_only", "ssid": "HomeNet", "bars": 5, "router": true, "pingMs": 2 },
+      { "minutesAgo": 1, "connectivity": "local_only", "ssid": "HomeNet", "bars": 5, "router": true, "pingMs": 3 }
+    ],
+    "events": [
+      { "kind": "network_change", "minutesAgo": 15, "summary": "Internet access lost; still connected to 'HomeNet'", "data": { "From": "internet", "To": "local_only", "SignalBarsNow": "5", "RouterReachableNow": "True" } }
+    ],
+    "expect": { "all": [ ["provider", "isp", "modem", "outage", "beyond", "internet service"] ], "forbid": ["weak signal", "move closer"] }
+  },
+  {
+    "id": "bsod-after-driver",
+    "note": "Multi-signal: blue screens and display resets start right after a graphics driver install.",
+    "complaint": "my pc keeps crashing with a blue screen since this week",
+    "changes": [ { "kind": "driver_installed", "name": "NVIDIA driver nvlddmkm 32.0.15.6094", "minutesAgo": 5000 } ],
+    "events": [
+      { "kind": "display_driver_reset", "minutesAgo": 4500, "provider": "Display", "eventId": 4101 },
+      { "kind": "blue_screen", "minutesAgo": 3000, "data": { "BugcheckCode": "0x116", "param1": "nvlddmkm.sys" } },
+      { "kind": "display_driver_reset", "minutesAgo": 1500, "provider": "Display", "eventId": 4101 },
+      { "kind": "blue_screen", "minutesAgo": 300, "data": { "BugcheckCode": "0x116", "param1": "nvlddmkm.sys" } }
+    ],
+    "expect": { "all": [ ["driver"], ["nvidia", "graphics"] ] }
+  },
+  {
+    "id": "overheating-shutdowns",
+    "note": "Unexpected shutdowns preceded by heavy thermal throttling.",
+    "complaint": "my laptop just turns off by itself when I play games",
+    "events": [
+      { "kind": "thermal_throttle", "minutesAgo": 2900, "count": 12 },
+      { "kind": "unexpected_shutdown", "minutesAgo": 2880, "data": { "BugcheckCode": "0" } },
+      { "kind": "thermal_throttle", "minutesAgo": 200, "count": 15 },
+      { "kind": "unexpected_shutdown", "minutesAgo": 180, "data": { "BugcheckCode": "0" } }
+    ],
+    "expect": { "all": [ ["heat", "hot", "overheat", "temperature", "cool"] ] }
+  },
+  {
+    "id": "failing-drive",
+    "note": "Bad blocks plus drive health warning: needs a human, back up now.",
+    "complaint": "files take forever to open and sometimes the pc freezes",
+    "events": [
+      { "kind": "disk_error", "minutesAgo": 600, "provider": "disk", "eventId": 7 },
+      { "kind": "disk_error", "minutesAgo": 300, "provider": "disk", "eventId": 7 },
+      { "kind": "drive_health", "minutesAgo": 120, "data": { "Model": "WDC WD10EZEX", "HealthStatus": "Warning", "ReadErrorsTotal": "184" } }
+    ],
+    "expect": { "all": [ ["back up", "backup"], ["drive", "disk"] ], "needsHuman": true }
+  },
+  {
+    "id": "app-update-crashes",
+    "note": "Crashes of one app start right after that app was updated.",
+    "complaint": "zoom crashes all the time now",
+    "changes": [ { "kind": "app_installed", "name": "Zoom Workplace 6.4.1", "minutesAgo": 2000 } ],
+    "events": [
+      { "kind": "app_crash", "minutesAgo": 1500, "app": "Zoom.exe" },
+      { "kind": "app_crash", "minutesAgo": 700, "app": "Zoom.exe" },
+      { "kind": "app_crash", "minutesAgo": 60, "app": "Zoom.exe" }
+    ],
+    "expect": { "all": [ ["zoom"], ["update", "6.4", "version", "reinstall"] ] }
+  },
+  {
+    "id": "freeze-disk-hog",
+    "note": "Excel freezes while OneDrive is hammering the disk.",
+    "complaint": "excel freezes when I save",
+    "series": { "minutes": 30, "baseMem": 60, "baseCpu": 15, "steady": [ { "name": "EXCEL", "mb": 900 } ] },
+    "events": [
+      { "kind": "app_hang", "minutesAgo": 20, "app": "EXCEL.EXE", "data": { "DurationSeconds": "12" }, "snapshot": { "mem": 64, "cpu": 30, "top": [ { "name": "EXCEL", "cpu": 3, "mb": 900 }, { "name": "OneDrive", "cpu": 12, "mb": 250, "diskMbps": 85 } ] } },
+      { "kind": "app_hang", "minutesAgo": 5, "app": "EXCEL.EXE", "data": { "DurationSeconds": "15" }, "snapshot": { "mem": 63, "cpu": 28, "top": [ { "name": "EXCEL", "cpu": 2, "mb": 910 }, { "name": "OneDrive", "cpu": 10, "mb": 260, "diskMbps": 90 } ] } }
+    ],
+    "expect": { "all": [ ["onedrive"], ["disk", "sync"] ] }
+  },
+  {
+    "id": "browser-memory",
+    "note": "Out-of-memory warnings while Chrome holds most RAM.",
+    "complaint": "I keep getting a message that my computer is low on memory",
+    "events": [
+      { "kind": "low_memory", "minutesAgo": 90, "snapshot": { "mem": 97, "cpu": 20, "top": [ { "name": "chrome", "cpu": 15, "mb": 7400 }, { "name": "Teams", "cpu": 3, "mb": 900 } ] } },
+      { "kind": "low_memory", "minutesAgo": 10, "snapshot": { "mem": 98, "cpu": 25, "top": [ { "name": "chrome", "cpu": 18, "mb": 7900 }, { "name": "Teams", "cpu": 3, "mb": 950 } ] } }
+    ],
+    "expect": { "all": [ ["chrome", "browser", "tabs"] ] }
+  },
+  {
+    "id": "slow-boot-startup-apps",
+    "note": "Startup got slow after several apps were set to start with Windows.",
+    "complaint": "my pc takes forever to start now",
+    "changes": [
+      { "kind": "startup_added", "name": "Steam", "minutesAgo": 4000 },
+      { "kind": "startup_added", "name": "EpicGamesLauncher", "minutesAgo": 3990 },
+      { "kind": "startup_added", "name": "Discord", "minutesAgo": 3980 }
+    ],
+    "events": [
+      { "kind": "boot_performance", "minutesAgo": 6000, "data": { "BootTime": "38000" } },
+      { "kind": "boot_performance", "minutesAgo": 3000, "data": { "BootTime": "141000" } },
+      { "kind": "boot_performance", "minutesAgo": 100, "data": { "BootTime": "152000" } }
+    ],
+    "expect": { "all": [ ["startup", "start automatically", "starts with windows", "start with windows"] ] }
+  },
+  {
+    "id": "nothing-relevant",
+    "note": "Complaint has no related evidence at all: the honest answer is 'not sure'.",
+    "complaint": "my printer won't print",
+    "events": [ { "kind": "wifi_drop", "minutesAgo": 3000 } ],
+    "expect": { "confidenceLow": true, "forbid": ["wi-fi is the cause", "because of the wi-fi"] }
+  },
+  {
+    "id": "noise-only",
+    "note": "Hundreds of scary-looking but harmless Windows warnings.",
+    "complaint": "event viewer shows hundreds of errors, is my pc dying?",
+    "events": [ { "kind": "noise", "minutesAgo": 100, "count": 40 } ],
+    "expect": { "all": [ ["harmless", "normal", "healthy", "nothing", "no sign", "not dying", "fine"] ], "forbid": ["is dying", "failing", "replace your"] }
+  },
+  {
+    "id": "unknown-process-crash-loop",
+    "note": "An app not in the knowledge base keeps crashing; the answer should name it and stay grounded.",
+    "complaint": "something keeps popping up an error and closing, what is WidgetBarHelper?",
+    "events": [
+      { "kind": "app_crash", "minutesAgo": 50, "app": "WidgetBarHelper.exe", "data": { "Exception": "System.IO.FileNotFoundException: Could not find file 'C:\\Users\\Public\\WidgetBar\\config.json'." } },
+      { "kind": "app_crash", "minutesAgo": 30, "app": "WidgetBarHelper.exe", "data": { "Exception": "System.IO.FileNotFoundException: Could not find file 'C:\\Users\\Public\\WidgetBar\\config.json'." } },
+      { "kind": "app_crash", "minutesAgo": 10, "app": "WidgetBarHelper.exe", "data": { "Exception": "System.IO.FileNotFoundException: Could not find file 'C:\\Users\\Public\\WidgetBar\\config.json'." } }
+    ],
+    "expect": { "all": [ ["widgetbar"], ["file", "config", "missing", "reinstall"] ] }
+  }
+]

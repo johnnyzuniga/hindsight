@@ -1,0 +1,331 @@
+[
+  {
+    "id": "noise-dcom-10016",
+    "title": "Harmless system permission warning",
+    "kinds": ["noise"],
+    "minCount": 1, "windowHours": 168,
+    "severity": "info", "noise": true,
+    "explanation": "Windows logs this warning constantly on almost every PC. It's a known, harmless quirk and doesn't affect your computer.",
+    "likelyCauses": ["Built-in Windows components asking for permissions they don't need"],
+    "fixes": [],
+    "needsHuman": false
+  },
+  {
+    "id": "power-loss",
+    "title": "Your PC turned off unexpectedly",
+    "kinds": ["unexpected_shutdown"],
+    "dataEquals": { "BugcheckCode": "0" },
+    "minCount": 1, "windowHours": 168,
+    "severity": "warning",
+    "explanation": "Your PC shut down without going through a normal shutdown, and it wasn't a blue screen. This usually means it lost power, was held off with the power button, or turned itself off to protect itself.",
+    "likelyCauses": ["Power cut, unplugged cable, or a drained laptop battery", "Holding the power button while the PC was frozen", "Overheating protection", "A failing power supply (if it happens often)"],
+    "fixes": [
+      { "label": "Check power and sleep settings", "uri": "ms-settings:powersleep" },
+      { "label": "Make sure vents aren't blocked and the PC isn't on a soft surface" }
+    ],
+    "needsHuman": false
+  },
+  {
+    "id": "power-loss-repeated",
+    "title": "Your PC keeps turning off by itself",
+    "kinds": ["unexpected_shutdown"],
+    "dataEquals": { "BugcheckCode": "0" },
+    "minCount": 3, "windowHours": 168,
+    "severity": "critical",
+    "supersedes": ["power-loss"],
+    "explanation": "Your PC has lost power several times this week without a normal shutdown. When this repeats, it often points to overheating or a hardware problem with power.",
+    "likelyCauses": ["Overheating (dust, blocked vents, failing fan)", "A failing power supply or laptop battery", "Loose power cable or faulty power strip"],
+    "fixes": [
+      { "label": "Clean dust from vents and fans, and keep the PC on a hard surface" },
+      { "label": "Try a different wall socket or power cable" }
+    ],
+    "needsHuman": true
+  },
+  {
+    "id": "blue-screen",
+    "title": "Your PC crashed with a blue screen",
+    "kinds": ["blue_screen"],
+    "minCount": 1, "windowHours": 168,
+    "severity": "warning",
+    "explanation": "Windows hit a serious error and had to restart. A single blue screen can be a one-off; it's worth acting if it happens again.",
+    "likelyCauses": ["A buggy or outdated driver (graphics, Wi-Fi, storage)", "A recent update or newly installed hardware", "Memory or storage problems (if it repeats)"],
+    "fixes": [
+      { "label": "Install Windows and driver updates", "uri": "ms-settings:windowsupdate" },
+      { "label": "Check optional driver updates", "uri": "ms-settings:windowsupdate-optionalupdates" }
+    ],
+    "needsHuman": false
+  },
+  {
+    "id": "blue-screen-repeated",
+    "title": "Repeated blue-screen crashes",
+    "kinds": ["blue_screen"],
+    "minCount": 2, "windowHours": 168,
+    "severity": "critical",
+    "supersedes": ["blue-screen"],
+    "explanation": "Your PC has crashed with a blue screen more than once this week. Repeated crashes usually have one underlying cause that's worth tracking down.",
+    "likelyCauses": ["A faulty or outdated driver", "Failing memory (RAM) or storage", "Overheating"],
+    "fixes": [
+      { "label": "Install Windows and driver updates", "uri": "ms-settings:windowsupdate" },
+      { "label": "Uninstall anything installed shortly before the crashes started", "uri": "ms-settings:appsfeatures" }
+    ],
+    "needsHuman": true
+  },
+  {
+    "id": "display-driver-reset",
+    "title": "Your graphics driver stopped and recovered",
+    "kinds": ["display_driver_reset"],
+    "minCount": 1, "windowHours": 168,
+    "severity": "notice",
+    "explanation": "Your screen may have flickered or gone black for a moment. Windows restarted the graphics driver to recover. Once is usually harmless.",
+    "likelyCauses": ["A graphics driver glitch", "A game or app pushing the graphics card hard"],
+    "fixes": [
+      { "label": "Check for driver updates", "uri": "ms-settings:windowsupdate-optionalupdates" }
+    ],
+    "needsHuman": false
+  },
+  {
+    "id": "display-driver-reset-repeated",
+    "title": "Your graphics driver keeps crashing",
+    "kinds": ["display_driver_reset"],
+    "minCount": 3, "windowHours": 168,
+    "severity": "warning",
+    "supersedes": ["display-driver-reset"],
+    "explanation": "The graphics driver has crashed and recovered several times. This often shows up as black screens, flicker, or games closing.",
+    "likelyCauses": ["Outdated or corrupted graphics driver", "Graphics card overheating", "Unstable overclock"],
+    "fixes": [
+      { "label": "Update your graphics driver from the PC or graphics card maker's website" },
+      { "label": "Check optional driver updates", "uri": "ms-settings:windowsupdate-optionalupdates" }
+    ],
+    "needsHuman": false
+  },
+  {
+    "id": "app-crash",
+    "title": "An app closed unexpectedly",
+    "kinds": ["app_crash"],
+    "minCount": 1, "windowHours": 168,
+    "severity": "notice",
+    "explanation": "An app crashed and closed. A single crash is usually a one-off bug in that app.",
+    "likelyCauses": ["A bug in the app", "Not enough free memory"],
+    "fixes": [
+      { "label": "Update the app" }
+    ],
+    "needsHuman": false
+  },
+  {
+    "id": "app-crash-loop",
+    "title": "{app} keeps crashing",
+    "kinds": ["app_crash"],
+    "sameApp": true,
+    "minCount": 3, "windowHours": 24,
+    "severity": "warning",
+    "supersedes": ["app-crash"],
+    "explanation": "The same app has crashed several times today. That usually means something specific is wrong with that app or its settings.",
+    "likelyCauses": ["A bad update of that app", "Corrupted app settings or cache", "A conflict with another program or plug-in"],
+    "fixes": [
+      { "label": "Update or reinstall the app", "uri": "ms-settings:appsfeatures" },
+      { "label": "Restart your PC, then try the app again" }
+    ],
+    "needsHuman": false
+  },
+  {
+    "id": "app-hang",
+    "title": "An app froze",
+    "kinds": ["app_hang"],
+    "minCount": 1, "windowHours": 168,
+    "severity": "notice",
+    "explanation": "An app stopped responding for a while. ResMan checks what else was happening at that moment.",
+    "likelyCauses": ["The app was waiting on something slow (disk, network)", "The PC was low on memory", "Another program was using most of the CPU"],
+    "fixes": [],
+    "needsHuman": false
+  },
+  {
+    "id": "app-hang-repeated",
+    "title": "{app} keeps freezing",
+    "kinds": ["app_hang"],
+    "sameApp": true,
+    "minCount": 3, "windowHours": 168,
+    "severity": "warning",
+    "supersedes": ["app-hang"],
+    "explanation": "The same app has frozen several times this week. Look at what the PC was doing during those freezes for the pattern.",
+    "likelyCauses": ["Low memory while the app is open", "Too many tabs, add-ons, or open files", "A background task competing for the disk"],
+    "fixes": [
+      { "label": "Close tabs or files you aren't using" },
+      { "label": "Update the app" }
+    ],
+    "needsHuman": false
+  },
+  {
+    "id": "thermal-throttle",
+    "title": "Your PC slowed itself down because of heat",
+    "kinds": ["thermal_throttle"],
+    "minCount": 1, "windowHours": 168,
+    "severity": "notice",
+    "explanation": "The processor ran slower than normal to stay cool. A little of this is normal under heavy load.",
+    "likelyCauses": ["Heavy work like games or video", "Blocked vents or dust", "A warm room or a soft surface under a laptop"],
+    "fixes": [
+      { "label": "Keep vents clear and use the laptop on a hard surface" }
+    ],
+    "needsHuman": false
+  },
+  {
+    "id": "thermal-throttle-frequent",
+    "title": "Your PC is running hot often",
+    "kinds": ["thermal_throttle"],
+    "minCount": 10, "windowHours": 24,
+    "severity": "warning",
+    "supersedes": ["thermal-throttle"],
+    "explanation": "Your processor has been slowing itself down to stay cool many times today. This makes everything feel slower and can point to a cooling problem.",
+    "likelyCauses": ["Dust build-up in fans or vents", "A background app keeping the CPU busy", "Aging thermal paste or a failing fan"],
+    "fixes": [
+      { "label": "Clean vents and fans" },
+      { "label": "Use the Balanced power mode instead of Best performance", "uri": "ms-settings:powersleep" }
+    ],
+    "needsHuman": false
+  },
+  {
+    "id": "disk-bad-block",
+    "title": "Your drive reported damaged areas",
+    "kinds": ["disk_error"],
+    "eventIds": [7],
+    "minCount": 1, "windowHours": 720,
+    "severity": "critical",
+    "explanation": "Your storage drive reported a damaged area it couldn't read. This can be an early sign the drive is failing.",
+    "likelyCauses": ["The drive is wearing out or failing", "A loose or faulty cable (desktop PCs)"],
+    "fixes": [
+      { "label": "Back up your important files now" },
+      { "label": "Check drive health", "uri": "ms-settings:disksandvolumes" }
+    ],
+    "needsHuman": true
+  },
+  {
+    "id": "disk-paging-error",
+    "title": "Your drive had trouble reading data",
+    "kinds": ["disk_error"],
+    "eventIds": [51],
+    "minCount": 1, "windowHours": 720,
+    "severity": "warning",
+    "explanation": "Windows had trouble reading from or writing to a drive. Once can be a glitch; repeated errors suggest a drive or cable problem.",
+    "likelyCauses": ["A failing drive", "A loose cable or a USB drive being removed", "Power-saving glitches on external drives"],
+    "fixes": [
+      { "label": "Back up your important files" },
+      { "label": "Check drive health", "uri": "ms-settings:disksandvolumes" }
+    ],
+    "needsHuman": true
+  },
+  {
+    "id": "disk-io-retried",
+    "title": "Your drive was slow to respond",
+    "kinds": ["disk_error"],
+    "eventIds": [153],
+    "minCount": 3, "windowHours": 168,
+    "severity": "warning",
+    "explanation": "Windows had to retry reading or writing to a drive several times. This can cause freezes and may be an early warning sign.",
+    "likelyCauses": ["A drive that's starting to fail", "Storage driver problems", "A very full drive"],
+    "fixes": [
+      { "label": "Back up your important files" },
+      { "label": "Free up space", "uri": "ms-settings:storagesense" }
+    ],
+    "needsHuman": false
+  },
+  {
+    "id": "drive-health-warning",
+    "title": "A drive's health is getting worse",
+    "kinds": ["drive_health"],
+    "minCount": 1, "windowHours": 720,
+    "severity": "critical",
+    "explanation": "One of your drives is reporting, through its own built-in health checks, that something is wrong: rising errors, heavy wear, or a warning status. Drives often show these signs before they fail.",
+    "likelyCauses": ["The drive is wearing out or starting to fail", "Overheating", "A loose or faulty cable (desktop PCs)"],
+    "fixes": [
+      { "label": "Back up your important files now" },
+      { "label": "Check drive health", "uri": "ms-settings:disksandvolumes" }
+    ],
+    "needsHuman": true
+  },
+  {
+    "id": "ntfs-corruption",
+    "title": "Files on your drive may be damaged",
+    "kinds": ["disk_error"],
+    "providers": ["Microsoft-Windows-Ntfs"],
+    "minCount": 1, "windowHours": 720,
+    "severity": "warning",
+    "explanation": "Windows found problems in the way files are organized on a drive. It can usually repair this itself.",
+    "likelyCauses": ["The PC turned off unexpectedly while saving", "A failing drive (if it repeats)"],
+    "fixes": [
+      { "label": "Back up your important files" },
+      { "label": "Restart your PC so Windows can check and repair the drive" }
+    ],
+    "needsHuman": false
+  },
+  {
+    "id": "low-memory",
+    "title": "Your PC ran out of memory",
+    "kinds": ["low_memory"],
+    "minCount": 1, "windowHours": 168,
+    "severity": "warning",
+    "explanation": "Your PC ran so low on memory that Windows had to step in. This often causes freezes and apps closing.",
+    "likelyCauses": ["Too many apps or browser tabs open at once", "One app using far more memory than it should"],
+    "fixes": [
+      { "label": "Close apps and browser tabs you aren't using" },
+      { "label": "Turn off apps that start automatically", "uri": "ms-settings:startupapps" }
+    ],
+    "needsHuman": false
+  },
+  {
+    "id": "hardware-error-corrected",
+    "title": "Your hardware reported a corrected error",
+    "kinds": ["hardware_error"],
+    "eventIds": [17, 19, 47],
+    "minCount": 5, "windowHours": 168,
+    "severity": "notice",
+    "explanation": "Your hardware found and fixed small errors on its own. Occasional ones are fine; lots of them can be an early warning.",
+    "likelyCauses": ["Unstable overclock or memory settings", "Aging hardware", "A device driver issue"],
+    "fixes": [
+      { "label": "Install Windows and driver updates", "uri": "ms-settings:windowsupdate" }
+    ],
+    "needsHuman": false
+  },
+  {
+    "id": "hardware-error-fatal",
+    "title": "Your hardware reported a serious error",
+    "kinds": ["hardware_error"],
+    "eventIds": [1, 18],
+    "minCount": 1, "windowHours": 720,
+    "severity": "critical",
+    "explanation": "A piece of hardware (often the processor or memory) reported an error it couldn't fix. This is worth getting checked.",
+    "likelyCauses": ["Failing memory, processor, or motherboard", "Overheating", "Unstable overclock"],
+    "fixes": [
+      { "label": "Back up your important files" },
+      { "label": "Undo any overclocking in your PC's settings" }
+    ],
+    "needsHuman": true
+  },
+  {
+    "id": "wifi-drops",
+    "title": "Your Wi-Fi keeps disconnecting",
+    "kinds": ["wifi_drop"],
+    "minCount": 5, "windowHours": 24,
+    "severity": "notice",
+    "explanation": "Your Wi-Fi connection dropped several times today.",
+    "likelyCauses": ["Weak signal or interference", "Wi-Fi adapter power saving", "An outdated Wi-Fi driver or router firmware"],
+    "fixes": [
+      { "label": "Open Wi-Fi settings", "uri": "ms-settings:network-wifi" },
+      { "label": "Restart your router" }
+    ],
+    "needsHuman": false
+  },
+  {
+    "id": "slow-boot",
+    "title": "Startup is slow",
+    "kinds": ["boot_performance"],
+    "dataGreaterThan": { "BootTime": 120000 },
+    "minCount": 1, "windowHours": 168,
+    "severity": "notice",
+    "explanation": "Your PC took more than two minutes to start up.",
+    "likelyCauses": ["Too many apps starting automatically", "A nearly full or slow drive", "Pending Windows updates"],
+    "fixes": [
+      { "label": "Turn off apps that start automatically", "uri": "ms-settings:startupapps" },
+      { "label": "Install pending updates", "uri": "ms-settings:windowsupdate" }
+    ],
+    "needsHuman": false
+  }
+]

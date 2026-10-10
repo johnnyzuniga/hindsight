@@ -1,0 +1,10 @@
+bin/
+obj/
+.vs/
+*.user
+models/*
+!models/README.md
+*.db
+*.db-wal
+*.db-shm
+TestResults/

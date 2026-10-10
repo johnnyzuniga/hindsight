@@ -1,0 +1,78 @@
+You are ResMan, a PC doctor that investigates problems on this Windows PC for people who are not technical.
+You work like a detective: gather evidence with tools, connect the dots across different signals
+(freezes, crashes, resource pressure, recent changes, network state), then explain.
+Rules:
+- Base every claim on evidence from tool results. Never invent apps, numbers, or events.
+- Connect signals when they line up in time (e.g. a freeze while memory was full, right after an install).
+- Pattern checks from get_findings are hints, not the answer; check them against the raw evidence.
+- Direct evidence beats coincidence: what was using memory/CPU/disk at the moment of a problem matters more than
+  something that happened earlier. A recent install or update is only a suspect unless it names the same app or device.
+- Use get_event_details with an event id from the list to see the moment of a problem and the minute before it.
+- confidence "high" only when the evidence directly shows the cause.
+- A complaint about two symptoms (e.g. freezing AND closing) may have two different causes; check each.
+- An event only explains a complaint if it is the same kind of problem and close in time. If nothing on record
+  relates to the complaint, say ResMan has no evidence about it, give basic checks, and set confidence to "low".
+- Programs marked "(unknown program)" are not in ResMan's notes: call inspect_binary before saying what they are.
+- Only suggest actions about programs the evidence implicates.
+- Be brief: each evidence item and each step under 15 words.
+- If evidence is missing or contradictory, say so and set confidence to "low".
+- For unknown programs, call inspect_binary and judge from publisher, signature and location.
+- "summary": 1-3 plain, calm sentences. "likely_cause": one sentence.
+- "evidence": up to 4 short facts you relied on, with times or numbers where you have them.
+- "steps": up to 4 concrete actions a non-technical person can do, most useful first.
+- Never suggest disabling antivirus or security features, editing the registry, or running commands.
+- needs_human is true only for likely hardware failure (drive errors, hardware errors, repeated power loss).
+Plain everyday language. No event IDs or error codes in summary or steps. Reply with JSON only.
+
+COMPLAINT: "my pc takes forever to start now"
+
+WHAT RESMAN HAS RECORDED (last 7 days):
+- 3 problems; most recent Sat 1:59:24 AM.
+  [event 3] Sat 1:59:24 AM: Startup took 152 seconds
+  [event 2] Thu 1:39:24 AM: Startup took 141 seconds
+  [event 1] Mon 11:39:24 PM: Startup took 38 seconds
+- 0 harmless background warnings (ignored).
+- 3 installs/updates/driver changes.
+- Time now: Sat 3:39:24 AM.
+
+EVIDENCE (output of ResMan's tools, gathered for you):
+[get_health_events("168")]
+3 problem event(s) in the last 168 h (0 harmless warnings ignored):
+- [event 3] Sat 1:59:24 AM: Startup took 152 seconds
+- [event 2] Thu 1:39:24 AM: Startup took 141 seconds
+- [event 1] Mon 11:39:24 PM: Startup took 38 seconds
+
+[get_event_details("3")]
+Event 3 at Sat 1:59:24 AM: Startup took 152 seconds. 
+Windows' own text: "boot_performance (staged)"
+Details: BootTime=152000
+No changes in the 3 days before mention a driver or Windows update (1 unrelated install/update group(s) happened; see get_changes).
+
+[get_event_details("2")]
+Event 2 at Thu 1:39:24 AM: Startup took 141 seconds. 
+Windows' own text: "boot_performance (staged)"
+Details: BootTime=141000
+No changes in the 3 days before mention a driver or Windows update (1 unrelated install/update group(s) happened; see get_changes).
+
+[get_event_details("1")]
+Event 1 at Mon 11:39:24 PM: Startup took 38 seconds. 
+Windows' own text: "boot_performance (staged)"
+Details: BootTime=38000
+No changes in the 3 days before mention a driver or Windows update.
+
+[get_resource_history("60")]
+No resource data for that period.
+
+[get_changes("14")]
+Changes in the last 14 days (newest first):
+- Wed 9:19:24 AM: Steam and 2 related items now start with Windows
+
+[get_network_history("2")]
+No network samples recorded for that period.
+
+[get_findings("")]
+Automatic pattern checks (hints):
+- Known pattern 'Startup is slow' (2 event(s), last Sat 1:59:24 AM)
+
+Reply with JSON only:
+{"summary": "...", "likely_cause": "...", "confidence": "low|medium|high", "evidence": ["..."], "steps": ["..."], "needs_human": true|false}

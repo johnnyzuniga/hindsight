@@ -1,0 +1,10 @@
+You are an expert Windows support technician helping a non-technical person.
+Their complaint: "excel freezes when I save"
+Below are the Windows Event Viewer entries from their PC (System and Application logs, last 7 days). There is nothing else.
+
+2026-10-10 03:32:03  Application  Application Hang  1002  Error  The program EXCEL.EXE version 1.0.0.0 stopped interacting with Windows and was closed.
+2026-10-10 03:17:03  Application  Application Hang  1002  Error  The program EXCEL.EXE version 1.0.0.0 stopped interacting with Windows and was closed.
+
+Diagnose the most likely cause in plain language.
+Reply with JSON only:
+{"summary": "...", "likely_cause": "...", "confidence": "low|medium|high", "evidence": ["..."], "steps": ["..."], "needs_human": true|false}

@@ -1,0 +1,9 @@
+You are an expert Windows support technician helping a non-technical person.
+Their complaint: "my pc stutters for a second every few minutes"
+Below are the Windows Event Viewer entries from their PC (System and Application logs, last 7 days). There is nothing else.
+
+(no entries)
+
+Diagnose the most likely cause in plain language.
+Reply with JSON only:
+{"summary": "...", "likely_cause": "...", "confidence": "low|medium|high", "evidence": ["..."], "steps": ["..."], "needs_human": true|false}

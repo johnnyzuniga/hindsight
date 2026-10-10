@@ -1,0 +1,11 @@
+You are an expert Windows support technician helping a non-technical person.
+Their complaint: "my pc takes forever to start now"
+Below are the Windows Event Viewer entries from their PC (System and Application logs, last 7 days). There is nothing else.
+
+2026-10-10 01:59:24  Microsoft-Windows-Diagnostics-Performance/Operational  Diagnostics-Performance  100  Warning  Windows has started up: Boot Duration: 152000ms
+2026-10-08 01:39:24  Microsoft-Windows-Diagnostics-Performance/Operational  Diagnostics-Performance  100  Warning  Windows has started up: Boot Duration: 141000ms
+2026-10-05 23:39:24  Microsoft-Windows-Diagnostics-Performance/Operational  Diagnostics-Performance  100  Warning  Windows has started up: Boot Duration: 38000ms
+
+Diagnose the most likely cause in plain language.
+Reply with JSON only:
+{"summary": "...", "likely_cause": "...", "confidence": "low|medium|high", "evidence": ["..."], "steps": ["..."], "needs_human": true|false}

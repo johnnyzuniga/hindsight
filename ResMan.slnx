@@ -1,0 +1,22 @@
+<Solution>
+  <Folder Name="/demo/">
+    <Project Path="demo/PhotoSync/PhotoSync.csproj" />
+    <Project Path="demo/SketchPad/SketchPad.csproj" />
+  </Folder>
+  <Folder Name="/evals/">
+    <Project Path="evals/ResMan.Evals/ResMan.Evals.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/ResMan.Agent/ResMan.Agent.csproj" />
+    <Project Path="src/ResMan.App/ResMan.App.csproj" />
+    <Project Path="src/ResMan.Brain/ResMan.Brain.csproj" />
+    <Project Path="src/ResMan.Cli/ResMan.Cli.csproj" />
+    <Project Path="src/ResMan.Core/ResMan.Core.csproj" />
+    <Project Path="src/ResMan.Data/ResMan.Data.csproj" />
+    <Project Path="src/ResMan.Inference/ResMan.Inference.csproj" />
+    <Project Path="src/ResMan.Service/ResMan.Service.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/ResMan.Tests/ResMan.Tests.csproj" />
+  </Folder>
+</Solution>
