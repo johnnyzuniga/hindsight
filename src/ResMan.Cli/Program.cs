@@ -284,8 +284,10 @@ static async Task<int> Preload(Api api, int minutes)
 static async Task<int> Demo(Api api, bool noPreload)
 {
     var demo = ResManPaths.FindUp("demo");
-    string Exe(string name) => new[] { "Release", "Debug" }
-        .Select(c => Path.Combine(demo ?? "", name, "bin", c, "net10.0-windows10.0.19041.0", name + ".exe")).FirstOrDefault(File.Exists)
+    // Packaged: the demo apps sit next to resman.exe. Development: under demo/<name>/bin.
+    string Exe(string name) => new[] { Path.Combine(AppContext.BaseDirectory, name + ".exe") }
+        .Concat(new[] { "Release", "Debug" }.Select(c => Path.Combine(demo ?? "", name, "bin", c, "net10.0-windows10.0.19041.0", name + ".exe")))
+        .FirstOrDefault(File.Exists)
         ?? throw new FileNotFoundException($"Build the demo apps first: dotnet build demo/{name}");
     var sketch = Exe("SketchPad");
     var photos = Exe("PhotoSync");

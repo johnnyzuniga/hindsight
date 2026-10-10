@@ -86,6 +86,12 @@ dotnet run --project evals/ResMan.Evals
 
 The model: put `Qwen3-4B-Instruct-2507-Q4_K_M.gguf` in `models/` (see [models/README.md](models/README.md)).
 
+**Portable package** (runs on a PC without .NET or the Windows App SDK installed):
+```bash
+powershell -ExecutionPolicy Bypass -File tools\package.ps1
+```
+This writes `dist\ResMan\` and `dist\ResMan-win-x64.zip` (about 160 MB; the model isn't included, so add `-IncludeModel` to bundle it). The package contains "Start ResMan.cmd", "Run demo.cmd", "Stop ResMan.cmd" and a README.
+
 [evals/README.md](evals/README.md) describes the honest A/B/C comparison: a big model with logs only, a big model with ResMan's evidence, and the local 4B model with the harness. Latest local results: **14/14** on 2026-10-10 (one case, the periodic stutter, failed the run before by suggesting an antivirus scan); **13/14, median 7.5 s** on 2026-10-09 with a healthy GPU.
 
 Run the service elevated to get boot-performance events and drive wear counters.

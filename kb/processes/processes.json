@@ -55,5 +55,9 @@
   { "name": "radeonsoftware", "title": "AMD Radeon Software", "publisher": "AMD", "what": "AMD graphics driver settings and overlays.", "safeToLimit": true, "notes": "" },
   { "name": "phoneexperiencehost", "title": "Phone Link", "publisher": "Microsoft", "what": "Connects your phone to your PC.", "safeToLimit": true, "notes": "Can be turned off from starting automatically if unused." },
   { "name": "widgets", "title": "Windows Widgets", "publisher": "Microsoft", "what": "The news and weather widgets panel.", "safeToLimit": true, "notes": "Can be turned off in taskbar settings." },
-  { "name": "smartscreen", "title": "Windows Defender SmartScreen", "publisher": "Microsoft", "what": "Checks downloads and apps for safety.", "safeToLimit": false, "notes": "Security component." }
+  { "name": "smartscreen", "title": "Windows Defender SmartScreen", "publisher": "Microsoft", "what": "Checks downloads and apps for safety.", "safeToLimit": false, "notes": "Security component." },
+  { "name": "claude", "title": "Claude desktop app", "publisher": "Anthropic", "what": "The Claude AI assistant app. Built on Electron, so it runs several processes like a browser does.", "safeToLimit": true, "notes": "Memory use is usually steady; long conversations and open tools use more." },
+  { "name": "brave", "title": "Brave browser", "publisher": "Brave Software", "what": "The Brave web browser. Each tab and extension runs as its own process.", "safeToLimit": true, "notes": "Memory use grows with open tabs." },
+  { "name": "wallpaper64", "title": "Wallpaper Engine", "publisher": "Wallpaper Engine Team", "what": "Animated desktop wallpapers. Uses the graphics card continuously while a wallpaper plays.", "safeToLimit": true, "notes": "Can slow games and other graphics work; it can pause itself when an app is full-screen (Settings > Performance)." },
+  { "name": "armourycrate", "title": "ASUS Armoury Crate", "publisher": "ASUS", "what": "ASUS laptop control center: performance modes, fans, lighting and the GPU mode switch.", "safeToLimit": true, "notes": "Its GPU mode (Eco, Standard, Ultimate) changes which graphics chip apps can use." }
 ]

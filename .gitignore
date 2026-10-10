@@ -8,3 +8,4 @@ models/*
 *.db-wal
 *.db-shm
 TestResults/
+dist/
